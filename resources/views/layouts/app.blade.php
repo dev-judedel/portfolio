@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}" x-data="{ darkMode: localStorage.getItem('darkMode') === 'true' }" x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" :class="{ 'dark': darkMode }">
+<html 
+    lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
+    x-data="{ darkMode: localStorage.getItem('darkMode') !== 'false' }" 
+    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" 
+    :class="{ 'dark': darkMode }" 
+    @toggle-dark-mode.window="darkMode = !darkMode"
+>
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,15 +25,22 @@
     
     <style>
         /* Ultra-Minimalist Space Theme - Professional Black & White */
-        body {
-            background: #000000;
-            /* Subtle star pattern - less prominent */
-            background-image: 
+        :root {
+            --page-bg: #010101;
+            --page-text: #f5f5f7;
+            --border-color: rgba(255, 255, 255, 0.2);
+            --page-bg-image: 
                 radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px),
                 radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
                 radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+        }
+
+        body {
+            background-color: var(--page-bg);
+            background-image: var(--page-bg-image);
             background-size: 600px 600px, 400px 400px, 300px 300px;
             background-position: 0 0, 50px 80px, 150px 300px;
+            color: var(--page-text);
         }
         
         .space-gradient {
@@ -94,13 +107,36 @@
         .link-underline:hover::after {
             width: 100%;
         }
+
+        html:not(.dark) {
+            --page-bg: #f8fafc;
+            --page-text: #0f172a;
+            --border-color: rgba(15, 23, 42, 0.2);
+            --page-bg-image:
+                radial-gradient(circle, rgba(15,23,42,0.06) 1px, transparent 1px),
+                radial-gradient(circle, rgba(15,23,42,0.04) 1px, transparent 1px),
+                radial-gradient(circle, rgba(15,23,42,0.02) 1px, transparent 1px);
+        }
+
+        html:not(.dark) .space-gradient {
+            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 60%, #f8fafc 100%);
+        }
+
+        html:not(.dark) [class*="text-white"] {
+            color: var(--page-text) !important;
+        }
+
+        html:not(.dark) [class*="bg-black"] {
+            background-color: rgba(15, 23, 42, 0.05) !important;
+        }
+
+        html:not(.dark) [class*="border-white"] {
+            border-color: var(--border-color) !important;
+        }
     </style>
 </head>
 <body class="font-sans antialiased text-white transition-colors duration-300">
     
-    <!-- Ultra-Subtle Constellation Canvas -->
-    <canvas id="particle-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
-
     <!-- Content Wrapper with minimal overlay -->
     <div class="relative z-10">
         <!-- Navigation -->

@@ -77,25 +77,31 @@
                 <!-- Minimal Orbital Visual Element -->
                 <div class="relative hidden lg:flex items-center justify-center opacity-0 animate-fade-in" style="animation-delay: 0.6s;">
                     <div class="relative w-full max-w-lg aspect-square">
+                        <canvas
+                            id="particle-canvas"
+                            class="absolute inset-0 pointer-events-none rounded-full opacity-80 z-0"
+                            style="mix-blend-mode: screen;"
+                        ></canvas>
+
                         <!-- Outer ring -->
-                        <div class="absolute inset-0 border border-white/5 rounded-full animate-spin-slow"></div>
+                        <div class="absolute inset-0 border border-white/5 rounded-full animate-spin-slow z-10"></div>
                         
                         <!-- Middle rings -->
-                        <div class="absolute inset-12 border border-white/8 rounded-full animate-spin-reverse"></div>
-                        <div class="absolute inset-24 border border-white/6 rounded-full animate-spin-slow" style="animation-duration: 40s;"></div>
+                        <div class="absolute inset-12 border border-white/8 rounded-full animate-spin-reverse z-10"></div>
+                        <div class="absolute inset-24 border border-white/6 rounded-full animate-spin-slow z-10" style="animation-duration: 40s;"></div>
                         
                         <!-- Inner glow -->
-                        <div class="absolute inset-32 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
+                        <div class="absolute inset-32 bg-white/5 rounded-full blur-3xl animate-pulse-slow z-10"></div>
                         
                         <!-- Center icon -->
-                        <div class="absolute inset-0 flex items-center justify-center">
+                        <div class="absolute inset-0 flex items-center justify-center z-10">
                             <i class="fas fa-code text-7xl text-white/20"></i>
                         </div>
                         
                         <!-- Floating dots -->
-                        <div class="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full animate-orbit"></div>
-                        <div class="absolute top-1/4 right-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit-reverse" style="animation-delay: 2s;"></div>
-                        <div class="absolute bottom-1/4 left-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit" style="animation-delay: 4s;"></div>
+                        <div class="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full animate-orbit z-10"></div>
+                        <div class="absolute top-1/4 right-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit-reverse z-10" style="animation-delay: 2s;"></div>
+                        <div class="absolute bottom-1/4 left-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit z-10" style="animation-delay: 4s;"></div>
                     </div>
                 </div>
             </div>

@@ -30,6 +30,16 @@
                     Contact
                 </a>
 
+                <button
+                    type="button"
+                    @click="$dispatch('toggle-dark-mode')"
+                    class="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-white/70 text-xs font-light tracking-[0.3em] uppercase transition duration-200 hover:border-white/40 hover:bg-white/10"
+                    aria-label="Toggle light and dark mode"
+                >
+                    <i class="fas fa-adjust"></i>
+                    <span class="hidden sm:inline">Theme</span>
+                </button>
+
                 <!-- Admin Link (if logged in) -->
                 @auth
                     <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-lg transition-all duration-300 font-medium border border-white/20 constellation-glow">
@@ -86,6 +96,14 @@
             <a href="{{ route('contact.index') }}" class="mobile-nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                 <i class="fas fa-envelope mr-3"></i> Contact
             </a>
+            <button
+                type="button"
+                @click="$dispatch('toggle-dark-mode')"
+                class="w-full flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 py-2 text-white/70 text-sm font-light hover:border-white/30 hover:bg-white/10 transition duration-200"
+            >
+                <i class="fas fa-adjust"></i>
+                <span>Toggle Theme</span>
+            </button>
             
             @auth
                 <a href="{{ route('admin.dashboard') }}" class="mobile-nav-link">
