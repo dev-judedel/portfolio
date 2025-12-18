@@ -34,7 +34,9 @@
                     <li><a href="{{ route('about') }}" class="footer-link">About</a></li>
                     <li><a href="{{ route('projects.index') }}" class="footer-link">Projects</a></li>
                     <li><a href="{{ route('services.index') }}" class="footer-link">Services</a></li>
-                    <li><a href="{{ route('blog.index') }}" class="footer-link">Blog</a></li>
+                    @if(Route::has('blog.index'))
+                        <li><a href="{{ route('blog.index') }}" class="footer-link">Blog</a></li>
+                    @endif
                     <li><a href="{{ route('contact.index') }}" class="footer-link">Contact</a></li>
                 </ul>
             </div>

@@ -23,9 +23,10 @@
                 <a href="{{ route('services.index') }}" class="nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
                     Services
                 </a>
-                <a href="{{ route('blog.index') }}" class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
+                {{-- Temporarily Hidden --}}
+                {{-- <a href="{{ route('blog.index') }}" class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
                     Blog
-                </a>
+                </a> --}}
                 <a href="{{ route('contact.index') }}" class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                     Contact
                 </a>
@@ -90,9 +91,10 @@
             <a href="{{ route('services.index') }}" class="mobile-nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
                 <i class="fas fa-cog mr-3"></i> Services
             </a>
-            <a href="{{ route('blog.index') }}" class="mobile-nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
+            {{-- Temporarily Hidden --}}
+            {{-- <a href="{{ route('blog.index') }}" class="mobile-nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
                 <i class="fas fa-blog mr-3"></i> Blog
-            </a>
+            </a> --}}
             <a href="{{ route('contact.index') }}" class="mobile-nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                 <i class="fas fa-envelope mr-3"></i> Contact
             </a>

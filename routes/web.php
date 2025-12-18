@@ -7,6 +7,13 @@ use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\SkillController;
+use App\Http\Controllers\Admin\ExperienceController;
+use App\Http\Controllers\Admin\AdminProjectController;
+use App\Http\Controllers\Admin\AdminServiceController;
+use App\Http\Controllers\Admin\TestimonialController;
+use App\Http\Controllers\Admin\AdminContactController;
+use App\Http\Controllers\Admin\SettingController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,10 +35,10 @@ Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name
 // Services
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 
-// Blog
-Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
-Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
+// Blog (Temporarily Hidden)
+// Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+// Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+// Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -59,48 +66,28 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
     
-    // Note: Additional admin routes will be added as controllers are created
-    // For now, dashboard is accessible at: /admin/dashboard
+    // Skills Management
+    Route::resource('skills', SkillController::class);
+    
+    // Experience Management
+    Route::resource('experiences', ExperienceController::class);
+    
+    // Projects Management
+    Route::resource('projects', AdminProjectController::class);
+    
+    // Services Management
+    Route::resource('services', AdminServiceController::class);
+    
+    // Testimonials Management
+    Route::resource('testimonials', TestimonialController::class);
+    
+    // Contact Messages
+    Route::resource('contacts', AdminContactController::class)->only(['index', 'show', 'destroy']);
+    Route::patch('contacts/{contact}/mark-read', [AdminContactController::class, 'markAsRead'])->name('contacts.mark-read');
+    Route::patch('contacts/{contact}/mark-unread', [AdminContactController::class, 'markAsUnread'])->name('contacts.mark-unread');
+    
+    // Settings
+    Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
+    Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
     
 });
-
-/*
-|--------------------------------------------------------------------------
-| Future Admin Routes (To be added)
-|--------------------------------------------------------------------------
-|
-| Once you generate the remaining admin controllers, add these routes:
-|
-| Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () {
-|     
-|     // Profile Management
-|     Route::resource('profile', Admin\AdminProfileController::class)->except(['index', 'show', 'destroy']);
-|     
-|     // Skills Management
-|     Route::resource('skills', Admin\SkillController::class);
-|     
-|     // Experience Management
-|     Route::resource('experiences', Admin\ExperienceController::class);
-|     
-|     // Projects Management
-|     Route::resource('projects', Admin\AdminProjectController::class);
-|     
-|     // Services Management
-|     Route::resource('services', Admin\AdminServiceController::class);
-|     
-|     // Blog Management
-|     Route::resource('blog/posts', Admin\BlogPostController::class);
-|     Route::resource('blog/categories', Admin\BlogCategoryController::class);
-|     
-|     // Testimonials Management
-|     Route::resource('testimonials', Admin\TestimonialController::class);
-|     
-|     // Contact Messages
-|     Route::resource('contacts', Admin\AdminContactController::class)->only(['index', 'show', 'destroy']);
-|     
-|     // Settings
-|     Route::get('settings', [Admin\SettingController::class, 'index'])->name('settings.index');
-|     Route::put('settings', [Admin\SettingController::class, 'update'])->name('settings.update');
-| });
-|
-*/
