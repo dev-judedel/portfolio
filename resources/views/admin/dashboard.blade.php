@@ -95,14 +95,14 @@
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
                 <!-- Manage Profile -->
-                <a href="{{ route('profile.edit') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
+                <a href="{{ route('admin.profile.edit') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.1s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-user text-white/40 group-hover:text-white/60 transition-colors"></i>
                         </div>
                         <div class="flex-1">
-                            <h3 class="text-lg font-light text-white/90 group-hover:text-white mb-2 transition-colors">Edit Profile</h3>
-                            <p class="text-white/40 text-sm font-light">Update your personal information and bio</p>
+                            <h3 class="text-lg font-light text-white/90 group-hover:text-white mb-2 transition-colors">Edit Portfolio Profile</h3>
+                            <p class="text-white/40 text-sm font-light">Update your bio, CV, and professional info</p>
                         </div>
                     </div>
                 </a>

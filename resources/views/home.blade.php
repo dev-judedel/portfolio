@@ -74,7 +74,7 @@
                     @endif
                 </div>
 
-                <!-- Minimal Orbital Visual Element -->
+                <!-- Profile Image with Orbital Animation -->
                 <div class="relative hidden lg:flex items-center justify-center opacity-0 animate-fade-in" style="animation-delay: 0.6s;">
                     <div class="relative w-full max-w-lg aspect-square">
                         <canvas
@@ -85,19 +85,33 @@
 
                         <!-- Outer ring -->
                         <div class="absolute inset-0 border border-white/5 rounded-full animate-spin-slow z-10"></div>
-                        
+
                         <!-- Middle rings -->
                         <div class="absolute inset-12 border border-white/8 rounded-full animate-spin-reverse z-10"></div>
                         <div class="absolute inset-24 border border-white/6 rounded-full animate-spin-slow z-10" style="animation-duration: 40s;"></div>
-                        
+
                         <!-- Inner glow -->
                         <div class="absolute inset-32 bg-white/5 rounded-full blur-3xl animate-pulse-slow z-10"></div>
-                        
-                        <!-- Center icon -->
-                        <div class="absolute inset-0 flex items-center justify-center z-10">
-                            <i class="fas fa-code text-7xl text-white/20"></i>
+
+                        <!-- Profile Image -->
+                        <div class="absolute inset-0 flex items-center justify-center z-20">
+                            <div class="relative group">
+                                @if($profile && $profile->profile_image)
+                                    <div class="relative w-64 h-64 rounded-full overflow-hidden border-4 border-white/10 group-hover:border-white/30 transition-all duration-500">
+                                        <img src="{{ asset('storage/' . $profile->profile_image) }}"
+                                             alt="{{ $profile->full_name }}"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
+                                    </div>
+                                    <div class="absolute -inset-4 bg-white/5 rounded-full blur-2xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                @else
+                                    <div class="w-64 h-64 rounded-full bg-white/5 border-4 border-white/10 flex items-center justify-center">
+                                        <i class="fas fa-user text-7xl text-white/20"></i>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                        
+
                         <!-- Floating dots -->
                         <div class="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full animate-orbit z-10"></div>
                         <div class="absolute top-1/4 right-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit-reverse z-10" style="animation-delay: 2s;"></div>
@@ -136,11 +150,16 @@
                     <div class="group project-card opacity-0 animate-fade-in-up" style="animation-delay: {{ $index * 0.1 }}s;">
                         <!-- Project Image -->
                         <div class="relative overflow-hidden aspect-[4/3] bg-black/20 rounded-lg mb-4">
-                            <img src="{{ asset('images/placeholder.jpg') }}" 
-                                 alt="{{ $project->title }}" 
-                                 class="w-full h-full object-cover opacity-40 group-hover:opacity-60 group-hover:scale-105 transition-all duration-700" 
-                                 onerror="this.style.display='none'">
-                            
+                            @if($project->featured_image)
+                                <img src="{{ asset('storage/' . $project->featured_image) }}"
+                                     alt="{{ $project->title }}"
+                                     class="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-105 transition-all duration-700">
+                            @else
+                                <div class="w-full h-full flex items-center justify-center bg-white/5">
+                                    <i class="fas fa-image text-4xl text-white/10"></i>
+                                </div>
+                            @endif
+
                             <!-- Subtle overlay on hover -->
                             <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500">
                                 <div class="absolute bottom-0 left-0 right-0 p-6">

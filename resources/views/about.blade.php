@@ -15,13 +15,30 @@
                         <div class="absolute inset-0 border border-white/5 rounded-full animate-spin-slow"></div>
                         <div class="absolute inset-12 border border-white/8 rounded-full animate-spin-reverse"></div>
                         <div class="absolute inset-24 border border-white/6 rounded-full animate-spin-slow" style="animation-duration: 40s;"></div>
-                        
-                        <!-- Center profile placeholder -->
+
+                        <!-- Glow effect -->
                         <div class="absolute inset-32 bg-white/5 rounded-full blur-3xl animate-pulse-slow"></div>
+
+                        <!-- Profile Image -->
                         <div class="absolute inset-0 flex items-center justify-center">
-                            <i class="fas fa-user-circle text-9xl text-white/20"></i>
+                            <div class="relative group">
+                                @if($profile && $profile->profile_image)
+                                    <div class="relative w-72 h-72 rounded-full overflow-hidden border-4 border-white/10 group-hover:border-white/30 transition-all duration-500 shadow-2xl">
+                                        <img src="{{ asset('storage/' . $profile->profile_image) }}"
+                                             alt="{{ $profile->full_name }}"
+                                             class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                                        <div class="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent"></div>
+                                    </div>
+                                    <!-- Hover glow -->
+                                    <div class="absolute -inset-6 bg-white/5 rounded-full blur-3xl opacity-0 group-hover:opacity-100 transition-opacity duration-500 -z-10"></div>
+                                @else
+                                    <div class="w-72 h-72 rounded-full bg-white/5 border-4 border-white/10 flex items-center justify-center">
+                                        <i class="fas fa-user-circle text-9xl text-white/20"></i>
+                                    </div>
+                                @endif
+                            </div>
                         </div>
-                        
+
                         <!-- Floating dots -->
                         <div class="absolute top-0 left-1/2 w-2 h-2 bg-white/30 rounded-full animate-orbit"></div>
                         <div class="absolute top-1/4 right-0 w-1.5 h-1.5 bg-white/20 rounded-full animate-orbit-reverse" style="animation-delay: 2s;"></div>

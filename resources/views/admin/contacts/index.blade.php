@@ -48,45 +48,27 @@
                                     <div class="text-sm font-light text-white/60">{{ $contact->email }}</div>
                                 </td>
                                 <td class="px-6 py-4">
-                                    <div class="text-sm font-light text-white/70 max-w-xs truncate">{{ $contact->subject }}</div>
+                                    <div class="text-sm font-light text-white/70">{{ Str::limit($contact->subject, 40) }}</div>
                                 </td>
                                 <td class="px-6 py-4">
                                     @if($contact->status === 'new')
-                                        <span class="px-2 py-1 bg-blue-500/20 border border-blue-500/30 rounded text-xs text-blue-400 font-light">New</span>
+                                    <span class="px-2 py-1 bg-blue-500/20 text-blue-400 rounded text-xs font-light border border-blue-500/30">New</span>
                                     @elseif($contact->status === 'read')
-                                        <span class="px-2 py-1 bg-white/10 border border-white/20 rounded text-xs text-white/60 font-light">Read</span>
+                                    <span class="px-2 py-1 bg-white/10 text-white/60 rounded text-xs font-light">Read</span>
                                     @elseif($contact->status === 'replied')
-                                        <span class="px-2 py-1 bg-green-500/20 border border-green-500/30 rounded text-xs text-green-400 font-light">Replied</span>
+                                    <span class="px-2 py-1 bg-green-500/20 text-green-400 rounded text-xs font-light border border-green-500/30">Replied</span>
                                     @elseif($contact->status === 'archived')
-                                        <span class="px-2 py-1 bg-yellow-500/20 border border-yellow-500/30 rounded text-xs text-yellow-400 font-light">Archived</span>
+                                    <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 rounded text-xs font-light border border-yellow-500/30">Archived</span>
                                     @endif
                                 </td>
                                 <td class="px-6 py-4">
                                     <div class="text-xs text-white/50 font-light">{{ $contact->created_at->format('M d, Y') }}</div>
-                                    <div class="text-xs text-white/30 font-light">{{ $contact->created_at->format('h:i A') }}</div>
                                 </td>
                                 <td class="px-6 py-4 text-right">
                                     <div class="flex items-center justify-end gap-2">
-                                        <a href="{{ route('admin.contacts.show', $contact) }}" class="px-3 py-1.5 bg-white/10 hover:bg-white/20 border border-white/20 hover:border-white/30 rounded text-white/70 hover:text-white text-xs font-light transition-all" title="View">
-                                            <i class="fas fa-eye mr-1"></i> View
+                                        <a href="{{ route('admin.contacts.show', $contact) }}" class="p-2 hover:bg-white/10 rounded transition-colors" title="View">
+                                            <i class="fas fa-eye text-white/60 hover:text-white/80"></i>
                                         </a>
-
-                                        @if($contact->status === 'new')
-                                        <form action="{{ route('admin.contacts.mark-read', $contact) }}" method="POST" class="inline">
-                                            @csrf
-                                            <button type="submit" class="p-2 hover:bg-white/10 rounded transition-colors" title="Mark as Read">
-                                                <i class="fas fa-check text-white/60 hover:text-white/80"></i>
-                                            </button>
-                                        </form>
-                                        @elseif($contact->status === 'read')
-                                        <form action="{{ route('admin.contacts.mark-unread', $contact) }}" method="POST" class="inline">
-                                            @csrf
-                                            <button type="submit" class="p-2 hover:bg-white/10 rounded transition-colors" title="Mark as Unread">
-                                                <i class="fas fa-envelope text-white/60 hover:text-white/80"></i>
-                                            </button>
-                                        </form>
-                                        @endif
-
                                         <form action="{{ route('admin.contacts.destroy', $contact) }}" method="POST" class="inline" onsubmit="return confirm('Are you sure you want to delete this message?');">
                                             @csrf
                                             @method('DELETE')

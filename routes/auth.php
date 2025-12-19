@@ -58,8 +58,8 @@ Route::middleware('auth')->group(function () {
     Route::post('logout', [AuthenticatedSessionController::class, 'destroy'])
                 ->name('logout');
 
-    // Profile Routes
-    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    Route::patch('profile', [ProfileController::class, 'update'])->name('profile.update');
-    Route::delete('profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Account Settings (User Profile)
+    Route::get('account', [ProfileController::class, 'edit'])->name('account.edit');
+    Route::patch('account', [ProfileController::class, 'update'])->name('account.update');
+    Route::delete('account', [ProfileController::class, 'destroy'])->name('account.destroy');
 });

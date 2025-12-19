@@ -4,7 +4,8 @@
       "Bash(cat:*)",
       "Bash(php artisan db:seed:*)",
       "Bash(for:*)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(resources/views/admin/settings/index.blade.php)"
     ],
     "deny": [],
     "ask": []
