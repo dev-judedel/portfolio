@@ -19,6 +19,10 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        //
+        // Share profile data with footer component
+        view()->composer('components.footer', function ($view) {
+            $profile = \App\Models\Profile::first();
+            $view->with('profile', $profile);
+        });
     }
 }

@@ -108,7 +108,7 @@
                 </a>
 
                 <!-- Manage Projects -->
-                <a href="#" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
+                <a href="{{ route('admin.projects.index') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.2s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-briefcase text-white/40 group-hover:text-white/60 transition-colors"></i>
@@ -121,7 +121,7 @@
                 </a>
 
                 <!-- Manage Skills -->
-                <a href="#" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
+                <a href="{{ route('admin.skills.index') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.3s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-code text-white/40 group-hover:text-white/60 transition-colors"></i>
@@ -134,7 +134,7 @@
                 </a>
 
                 <!-- Manage Blog -->
-                <a href="#" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
+                <a href="{{ route('admin.blog.posts.index') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.4s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-newspaper text-white/40 group-hover:text-white/60 transition-colors"></i>
@@ -147,7 +147,7 @@
                 </a>
 
                 <!-- View Messages -->
-                <a href="#" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
+                <a href="{{ route('admin.contacts.index') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.5s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-envelope text-white/40 group-hover:text-white/60 transition-colors"></i>
@@ -165,7 +165,7 @@
                 </a>
 
                 <!-- Settings -->
-                <a href="#" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
+                <a href="{{ route('admin.settings.index') }}" class="group p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/10 hover:border-white/20 hover:bg-white/8 transition-all duration-500 opacity-0 animate-fade-in-up" style="animation-delay: 0.6s;">
                     <div class="flex items-start gap-4">
                         <div class="w-12 h-12 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 group-hover:border-white/20 transition-colors flex-shrink-0">
                             <i class="fas fa-cog text-white/40 group-hover:text-white/60 transition-colors"></i>

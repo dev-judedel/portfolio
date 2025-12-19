@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Contact;
+use App\Models\Profile;
 use App\Models\Setting;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
@@ -12,11 +13,12 @@ class ContactController extends Controller
 {
     public function index()
     {
+        $profile = Profile::first();
         $contactEmail = Setting::get('contact_email');
         $contactPhone = Setting::get('contact_phone');
         $contactAddress = Setting::get('contact_address');
 
-        return view('contact', compact('contactEmail', 'contactPhone', 'contactAddress'));
+        return view('contact', compact('profile', 'contactEmail', 'contactPhone', 'contactAddress'));
     }
 
     public function store(Request $request)

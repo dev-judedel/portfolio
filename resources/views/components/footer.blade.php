@@ -5,25 +5,35 @@
             <!-- About Section -->
             <div class="col-span-1 md:col-span-2">
                 <h3 class="text-2xl font-bold text-white mb-4 text-glow">
-                    Portfolio
+                    {{ $profile->full_name ?? 'Portfolio' }}
                 </h3>
                 <p class="text-white/60 mb-4 font-light">
-                    Full-Stack Developer & UI/UX Designer passionate about creating beautiful, functional web applications.
+                    {{ $profile->short_bio ?? 'Full-Stack Developer & UI/UX Designer passionate about creating beautiful, functional web applications.' }}
                 </p>
+                @if($profile && $profile->social_links)
                 <div class="flex space-x-4">
-                    <a href="#" class="social-link" aria-label="GitHub">
+                    @if(!empty($profile->social_links['github']))
+                    <a href="{{ $profile->social_links['github'] }}" target="_blank" class="social-link" aria-label="GitHub">
                         <i class="fab fa-github"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="LinkedIn">
+                    @endif
+                    @if(!empty($profile->social_links['linkedin']))
+                    <a href="{{ $profile->social_links['linkedin'] }}" target="_blank" class="social-link" aria-label="LinkedIn">
                         <i class="fab fa-linkedin"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="Twitter">
+                    @endif
+                    @if(!empty($profile->social_links['twitter']))
+                    <a href="{{ $profile->social_links['twitter'] }}" target="_blank" class="social-link" aria-label="Twitter">
                         <i class="fab fa-twitter"></i>
                     </a>
-                    <a href="#" class="social-link" aria-label="Dribbble">
+                    @endif
+                    @if(!empty($profile->social_links['dribbble']))
+                    <a href="{{ $profile->social_links['dribbble'] }}" target="_blank" class="social-link" aria-label="Dribbble">
                         <i class="fab fa-dribbble"></i>
                     </a>
+                    @endif
                 </div>
+                @endif
             </div>
 
             <!-- Quick Links -->
@@ -45,18 +55,24 @@
             <div>
                 <h4 class="font-semibold text-white mb-4">Get in Touch</h4>
                 <ul class="space-y-2 text-white/60 font-light">
+                    @if($profile && $profile->email)
                     <li class="flex items-start">
                         <i class="fas fa-envelope mt-1 mr-2 text-white/40"></i>
-                        <span>judedelacruz2025@gmail.com</span>
+                        <span>{{ $profile->email }}</span>
                     </li>
+                    @endif
+                    @if($profile && $profile->phone)
                     <li class="flex items-start">
                         <i class="fas fa-phone mt-1 mr-2 text-white/40"></i>
-                        <span>63 (956) 130-5511</span>
+                        <span>{{ $profile->phone }}</span>
                     </li>
+                    @endif
+                    @if($profile && $profile->location)
                     <li class="flex items-start">
                         <i class="fas fa-map-marker-alt mt-1 mr-2 text-white/40"></i>
-                        <span>Bulacan, PH</span>
+                        <span>{{ $profile->location }}</span>
                     </li>
+                    @endif
                 </ul>
             </div>
         </div>
@@ -65,7 +81,7 @@
         <div class="mt-8 pt-8 border-t border-white/10">
             <div class="flex flex-col md:flex-row justify-between items-center">
                 <p class="text-white/60 text-sm font-light">
-                    &copy; {{ date('Y') }} Portfolio. All rights reserved.
+                    &copy; {{ date('Y') }} {{ $profile->full_name ?? 'Portfolio' }}. All rights reserved.
                 </p>
                 <p class="text-white/60 text-sm mt-2 md:mt-0 font-light">
                     Crafted with <i class="fas fa-heart text-white/40"></i> using Laravel & Tailwind CSS

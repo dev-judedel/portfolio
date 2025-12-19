@@ -14,6 +14,8 @@ use App\Http\Controllers\Admin\AdminServiceController;
 use App\Http\Controllers\Admin\TestimonialController;
 use App\Http\Controllers\Admin\AdminContactController;
 use App\Http\Controllers\Admin\SettingController;
+use App\Http\Controllers\Admin\BlogPostController;
+use App\Http\Controllers\Admin\BlogCategoryController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -35,10 +37,10 @@ Route::get('/projects/{project:slug}', [ProjectController::class, 'show'])->name
 // Services
 Route::get('/services', [ServiceController::class, 'index'])->name('services.index');
 
-// Blog (Temporarily Hidden)
-// Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
-// Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
-// Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
+// Blog
+Route::get('/blog', [BlogController::class, 'index'])->name('blog.index');
+Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
+Route::get('/blog/category/{slug}', [BlogController::class, 'category'])->name('blog.category');
 
 // Contact
 Route::get('/contact', [ContactController::class, 'index'])->name('contact.index');
@@ -89,5 +91,11 @@ Route::middleware(['auth'])->prefix('admin')->name('admin.')->group(function () 
     // Settings
     Route::get('settings', [SettingController::class, 'index'])->name('settings.index');
     Route::put('settings', [SettingController::class, 'update'])->name('settings.update');
-    
+
+    // Blog Management
+    Route::prefix('blog')->name('blog.')->group(function () {
+        Route::resource('posts', BlogPostController::class);
+        Route::resource('categories', BlogCategoryController::class)->except(['show']);
+    });
+
 });
