@@ -17,10 +17,10 @@ class AdminContactController extends Controller
     public function show(Contact $contact)
     {
         // Mark as read when viewed
-        if (!$contact->is_read) {
-            $contact->update(['is_read' => true]);
+        if ($contact->status === 'new') {
+            $contact->update(['status' => 'read']);
         }
-        
+
         return view('admin.contacts.show', compact('contact'));
     }
 
@@ -34,7 +34,7 @@ class AdminContactController extends Controller
 
     public function markAsRead(Contact $contact)
     {
-        $contact->update(['is_read' => true]);
+        $contact->update(['status' => 'read']);
 
         return redirect()->back()
             ->with('success', 'Message marked as read.');
@@ -42,7 +42,7 @@ class AdminContactController extends Controller
 
     public function markAsUnread(Contact $contact)
     {
-        $contact->update(['is_read' => false]);
+        $contact->update(['status' => 'new']);
 
         return redirect()->back()
             ->with('success', 'Message marked as unread.');
