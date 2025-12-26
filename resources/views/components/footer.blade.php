@@ -1,17 +1,17 @@
-<footer class="bg-black/90 border-t border-white/10 transition-colors duration-300">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+<footer class="bg-[var(--page-text)] text-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
 
             <!-- About Section -->
             <div class="col-span-1 md:col-span-2">
-                <h3 class="text-2xl font-bold text-white mb-4 text-glow">
+                <h3 class="font-heading text-2xl font-bold text-white mb-4">
                     {{ $profile->full_name ?? 'Portfolio' }}
                 </h3>
-                <p class="text-white/60 mb-4 font-light">
+                <p class="text-white/60 mb-6 font-body leading-relaxed">
                     {{ $profile->short_bio ?? 'Full-Stack Developer & UI/UX Designer passionate about creating beautiful, functional web applications.' }}
                 </p>
                 @if($profile && $profile->social_links)
-                <div class="flex space-x-4">
+                <div class="flex space-x-3">
                     @if(!empty($profile->social_links['github']))
                     <a href="{{ $profile->social_links['github'] }}" target="_blank" class="social-link" aria-label="GitHub">
                         <i class="fab fa-github"></i>
@@ -38,38 +38,35 @@
 
             <!-- Quick Links -->
             <div>
-                <h4 class="font-semibold text-white mb-4">Quick Links</h4>
-                <ul class="space-y-2">
+                <h4 class="font-heading font-semibold text-white mb-6 text-sm uppercase tracking-wider">Quick Links</h4>
+                <ul class="space-y-3">
                     <li><a href="{{ route('home') }}" class="footer-link">Home</a></li>
                     <li><a href="{{ route('about') }}" class="footer-link">About</a></li>
                     <li><a href="{{ route('projects.index') }}" class="footer-link">Projects</a></li>
                     <li><a href="{{ route('services.index') }}" class="footer-link">Services</a></li>
-                    @if(Route::has('blog.index'))
-                        <li><a href="{{ route('blog.index') }}" class="footer-link">Blog</a></li>
-                    @endif
                     <li><a href="{{ route('contact.index') }}" class="footer-link">Contact</a></li>
                 </ul>
             </div>
 
             <!-- Contact Info -->
             <div>
-                <h4 class="font-semibold text-white mb-4">Get in Touch</h4>
-                <ul class="space-y-2 text-white/60 font-light">
+                <h4 class="font-heading font-semibold text-white mb-6 text-sm uppercase tracking-wider">Get in Touch</h4>
+                <ul class="space-y-3 text-white/60 font-body">
                     @if($profile && $profile->email)
-                    <li class="flex items-start">
-                        <i class="fas fa-envelope mt-1 mr-2 text-white/40"></i>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-envelope mt-1 text-white/40"></i>
                         <span>{{ $profile->email }}</span>
                     </li>
                     @endif
                     @if($profile && $profile->phone)
-                    <li class="flex items-start">
-                        <i class="fas fa-phone mt-1 mr-2 text-white/40"></i>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-phone mt-1 text-white/40"></i>
                         <span>{{ $profile->phone }}</span>
                     </li>
                     @endif
                     @if($profile && $profile->location)
-                    <li class="flex items-start">
-                        <i class="fas fa-map-marker-alt mt-1 mr-2 text-white/40"></i>
+                    <li class="flex items-start gap-3">
+                        <i class="fas fa-map-marker-alt mt-1 text-white/40"></i>
                         <span>{{ $profile->location }}</span>
                     </li>
                     @endif
@@ -78,13 +75,13 @@
         </div>
 
         <!-- Bottom Bar -->
-        <div class="mt-8 pt-8 border-t border-white/10">
-            <div class="flex flex-col md:flex-row justify-between items-center">
-                <p class="text-white/60 text-sm font-light">
+        <div class="mt-12 pt-8 border-t border-white/10">
+            <div class="flex flex-col md:flex-row justify-between items-center gap-4">
+                <p class="text-white/50 text-sm font-body">
                     &copy; {{ date('Y') }} {{ $profile->full_name ?? 'Portfolio' }}. All rights reserved.
                 </p>
-                <p class="text-white/60 text-sm mt-2 md:mt-0 font-light">
-                    Crafted with <i class="fas fa-heart text-white/40"></i> using Laravel & Tailwind CSS
+                <p class="text-white/50 text-sm font-body flex items-center gap-2">
+                    Crafted with <i class="fas fa-heart text-[var(--accent-primary)]"></i> using Laravel & Tailwind CSS
                 </p>
             </div>
         </div>
@@ -93,18 +90,32 @@
 
 <style>
     .social-link {
-        @apply w-10 h-10 rounded-full bg-white/10 backdrop-blur-sm flex items-center justify-center text-white/70 hover:text-white hover:bg-white/20 transition-all duration-300 border border-white/10;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 2.5rem;
+        height: 2.5rem;
+        border-radius: 0.5rem;
+        background-color: rgba(255, 255, 255, 0.1);
+        color: rgba(255, 255, 255, 0.7);
+        transition: all 0.3s ease;
     }
 
     .social-link:hover {
-        box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        background-color: var(--accent-primary);
+        color: white;
+        transform: translateY(-2px);
     }
 
     .footer-link {
-        @apply text-white/60 hover:text-white transition-colors duration-300 font-light;
+        color: rgba(255, 255, 255, 0.6);
+        font-family: 'DM Sans', sans-serif;
+        transition: all 0.3s ease;
+        display: inline-block;
     }
 
     .footer-link:hover {
-        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        color: white;
+        transform: translateX(4px);
     }
 </style>

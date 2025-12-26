@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<html 
-    lang="{{ str_replace('_', '-', app()->getLocale()) }}" 
-    x-data="{ darkMode: localStorage.getItem('darkMode') !== 'false' }" 
-    x-init="$watch('darkMode', val => localStorage.setItem('darkMode', val))" 
-    :class="{ 'dark': darkMode }" 
-    @toggle-dark-mode.window="darkMode = !darkMode"
->
+<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -13,9 +7,10 @@
 
     <title>@yield('title', config('app.name', 'Portfolio'))</title>
 
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.bunny.net">
-    <link href="https://fonts.bunny.net/css?family=inter:100,200,300,400,500,600,700&display=swap" rel="stylesheet" />
+    <!-- Fonts - Distinctive Typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Syne:wght@400;500;600;700;800&family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap" rel="stylesheet">
 
     <!-- Font Awesome -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -24,44 +19,68 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     
     <style>
-        /* Ultra-Minimalist Space Theme - Professional Black & White */
+        /* Claude-Inspired Light Theme - Modern AI Aesthetic */
         :root {
-            --page-bg: #010101;
-            --page-text: #f5f5f7;
-            --border-color: rgba(255, 255, 255, 0.2);
-            --page-bg-image: 
-                radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
-                radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
+            --page-bg: #FFFAF5;
+            --page-bg-secondary: #FFF7F0;
+            --page-text: #1a1a1a;
+            --page-text-muted: #6b6b6b;
+            --page-text-light: #9a9a9a;
+            --accent-primary: #D97757;
+            --accent-secondary: #CC785C;
+            --border-color: rgba(26, 26, 26, 0.1);
+            --border-hover: rgba(26, 26, 26, 0.2);
+            --button-bg: #1a1a1a;
+            --button-bg-hover: #2d2d2d;
+            --button-text: #ffffff;
+            --card-bg: rgba(255, 255, 255, 0.7);
+            --card-border: rgba(26, 26, 26, 0.08);
+        }
+
+        * {
+            scroll-behavior: smooth;
         }
 
         body {
             background-color: var(--page-bg);
-            background-image: var(--page-bg-image);
-            background-size: 600px 600px, 400px 400px, 300px 300px;
-            background-position: 0 0, 50px 80px, 150px 300px;
             color: var(--page-text);
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Typography */
+        .font-display {
+            font-family: 'Instrument Serif', serif;
         }
         
-        .space-gradient {
+        .font-heading {
+            font-family: 'Syne', sans-serif;
+        }
+        
+        .font-body {
+            font-family: 'DM Sans', sans-serif;
+        }
+
+        /* Subtle grain texture overlay */
+        .grain-overlay::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.03;
+            z-index: 1000;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+        }
+        
+        /* Page gradient background */
+        .page-gradient {
             background: linear-gradient(180deg, 
-                rgba(0,0,0,0.98) 0%, 
-                rgba(5,5,10,0.95) 50%,
-                rgba(0,0,0,0.98) 100%
+                var(--page-bg) 0%, 
+                var(--page-bg-secondary) 50%,
+                var(--page-bg) 100%
             );
-        }
-        
-        /* Ultra-subtle glow effects */
-        .constellation-glow {
-            box-shadow: 
-                0 0 30px rgba(255,255,255,0.03),
-                0 0 60px rgba(255,255,255,0.02);
-        }
-        
-        .text-glow {
-            text-shadow: 
-                0 0 20px rgba(255,255,255,0.15),
-                0 0 40px rgba(255,255,255,0.08);
         }
         
         /* Smooth scrollbar */
@@ -70,25 +89,25 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: rgba(0,0,0,0.5);
+            background: var(--page-bg);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: rgba(255,255,255,0.1);
+            background: rgba(26, 26, 26, 0.15);
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: rgba(255,255,255,0.15);
+            background: rgba(26, 26, 26, 0.25);
         }
         
         /* Selection color */
         ::selection {
-            background: rgba(255,255,255,0.15);
+            background: var(--accent-primary);
             color: #ffffff;
         }
         
-        /* Link subtle underline animation */
+        /* Link underline animation */
         .link-underline {
             position: relative;
         }
@@ -100,7 +119,7 @@
             height: 1px;
             bottom: -2px;
             left: 0;
-            background: rgba(255,255,255,0.5);
+            background: var(--page-text);
             transition: width 0.3s ease;
         }
         
@@ -108,42 +127,203 @@
             width: 100%;
         }
 
-        html:not(.dark) {
-            --page-bg: #f8fafc;
-            --page-text: #0f172a;
-            --border-color: rgba(15, 23, 42, 0.2);
-            --page-bg-image:
-                radial-gradient(circle, rgba(15,23,42,0.06) 1px, transparent 1px),
-                radial-gradient(circle, rgba(15,23,42,0.04) 1px, transparent 1px),
-                radial-gradient(circle, rgba(15,23,42,0.02) 1px, transparent 1px);
+        /* Black buttons */
+        .btn-primary {
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: none;
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-primary:hover {
+            background-color: var(--button-bg-hover);
+            transform: translateY(-2px);
+            box-shadow: 0 10px 30px rgba(26, 26, 26, 0.2);
         }
 
-        html:not(.dark) .space-gradient {
-            background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 60%, #f8fafc 100%);
+        .btn-secondary {
+            background-color: transparent;
+            color: var(--page-text);
+            border: 1px solid var(--border-color);
+            padding: 0.875rem 2rem;
+            border-radius: 0.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--page-text);
+            background-color: var(--page-text);
+            color: var(--button-text);
         }
 
-        html:not(.dark) [class*="text-white"] {
-            color: var(--page-text) !important;
+        /* Card styles */
+        .card-modern {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            backdrop-filter: blur(10px);
+            border-radius: 1rem;
+            transition: all 0.4s ease;
         }
 
-        html:not(.dark) [class*="bg-black"] {
-            background-color: rgba(15, 23, 42, 0.05) !important;
+        .card-modern:hover {
+            border-color: var(--border-hover);
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(26, 26, 26, 0.08);
         }
 
-        html:not(.dark) [class*="border-white"] {
-            border-color: var(--border-color) !important;
+        /* Typing cursor animation */
+        .typing-cursor {
+            display: inline-block;
+            width: 3px;
+            height: 1em;
+            background-color: var(--accent-primary);
+            margin-left: 4px;
+            animation: blink 1s step-end infinite;
+        }
+
+        @keyframes blink {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0; }
+        }
+
+        /* Text reveal animation */
+        .reveal-text {
+            opacity: 0;
+            transform: translateY(30px);
+            animation: revealText 0.8s ease forwards;
+        }
+
+        @keyframes revealText {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Staggered animations */
+        .reveal-1 { animation-delay: 0.1s; }
+        .reveal-2 { animation-delay: 0.2s; }
+        .reveal-3 { animation-delay: 0.3s; }
+        .reveal-4 { animation-delay: 0.4s; }
+        .reveal-5 { animation-delay: 0.5s; }
+        .reveal-6 { animation-delay: 0.6s; }
+        .reveal-7 { animation-delay: 0.7s; }
+        .reveal-8 { animation-delay: 0.8s; }
+
+        /* Fade in up animation */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(40px);
+            animation: fadeInUp 0.8s ease forwards;
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Slide in animation */
+        .slide-in-left {
+            opacity: 0;
+            transform: translateX(-50px);
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        @keyframes slideInLeft {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        .slide-in-right {
+            opacity: 0;
+            transform: translateX(50px);
+            animation: slideInRight 0.8s ease forwards;
+        }
+
+        @keyframes slideInRight {
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        /* Scale in animation */
+        .scale-in {
+            opacity: 0;
+            transform: scale(0.9);
+            animation: scaleIn 0.6s ease forwards;
+        }
+
+        @keyframes scaleIn {
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Floating animation */
+        .float {
+            animation: float 6s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-20px); }
+        }
+
+        /* Pulse glow */
+        .pulse-glow {
+            animation: pulseGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% { 
+                box-shadow: 0 0 20px rgba(217, 119, 87, 0.2);
+            }
+            50% { 
+                box-shadow: 0 0 40px rgba(217, 119, 87, 0.4);
+            }
+        }
+
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--page-text) 0%, var(--page-text-muted) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Section divider */
+        .section-divider {
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(90deg, var(--page-text), transparent);
         }
     </style>
 </head>
-<body class="font-sans antialiased text-white transition-colors duration-300">
+<body class="font-body antialiased grain-overlay">
     
-    <!-- Content Wrapper with minimal overlay -->
+    <!-- Content Wrapper -->
     <div class="relative z-10">
         <!-- Navigation -->
         @include('components.navbar')
 
         <!-- Page Content -->
-        <main class="space-gradient">
+        <main class="page-gradient">
             @yield('content')
         </main>
 
@@ -151,7 +331,7 @@
         @include('components.footer')
     </div>
 
-    <!-- Minimal Scroll to Top Button -->
+    <!-- Scroll to Top Button -->
     <button 
         x-data="{ show: false }"
         x-show="show"
@@ -163,7 +343,7 @@
         x-transition:leave-start="opacity-100"
         x-transition:leave-end="opacity-0"
         @click="window.scrollTo({ top: 0, behavior: 'smooth' })"
-        class="fixed bottom-8 right-8 bg-white/5 hover:bg-white/10 backdrop-blur-md text-white/60 hover:text-white p-3.5 rounded-lg transition-all duration-300 z-50 border border-white/10 hover:border-white/20 group"
+        class="fixed bottom-8 right-8 bg-[var(--button-bg)] hover:bg-[var(--button-bg-hover)] text-white p-3.5 rounded-lg transition-all duration-300 z-50 shadow-lg hover:shadow-xl group"
         aria-label="Scroll to top"
     >
         <i class="fas fa-arrow-up text-sm group-hover:-translate-y-0.5 transition-transform"></i>

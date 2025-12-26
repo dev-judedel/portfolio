@@ -1,11 +1,16 @@
-<nav x-data="{ mobileMenuOpen: false }" class="sticky top-0 z-40 bg-black/80 backdrop-blur-md border-b border-white/10 transition-colors duration-300">
+<nav x-data="{ mobileMenuOpen: false, scrolled: false }" 
+     x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 })"
+     :class="{ 'bg-[var(--page-bg)]/95 backdrop-blur-md shadow-sm': scrolled, 'bg-transparent': !scrolled }"
+     class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div class="flex justify-between items-center h-16">
+        <div class="flex justify-between items-center h-20">
             
             <!-- Logo -->
             <div class="flex-shrink-0">
-                <a href="{{ route('home') }}" class="text-2xl font-bold text-white hover:text-white/80 transition-colors duration-300">
-                    <span class="text-glow">Portfolio</span>
+                <a href="{{ route('home') }}" class="group flex items-center gap-2">
+                    <span class="font-heading text-2xl font-bold text-[var(--page-text)] group-hover:text-[var(--accent-primary)] transition-colors duration-300">
+                        Portfolio
+                    </span>
                 </a>
             </div>
 
@@ -23,28 +28,15 @@
                 <a href="{{ route('services.index') }}" class="nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
                     Services
                 </a>
-                {{-- Temporarily Hidden --}}
-                {{-- <a href="{{ route('blog.index') }}" class="nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
-                    Blog
-                </a> --}}
                 <a href="{{ route('contact.index') }}" class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
                     Contact
                 </a>
 
-                <button
-                    type="button"
-                    @click="$dispatch('toggle-dark-mode')"
-                    class="flex items-center gap-2 rounded-full border border-white/20 bg-white/5 px-4 py-2 text-white/70 text-xs font-light tracking-[0.3em] uppercase transition duration-200 hover:border-white/40 hover:bg-white/10"
-                    aria-label="Toggle light and dark mode"
-                >
-                    <i class="fas fa-adjust"></i>
-                    <span class="hidden sm:inline">Theme</span>
-                </button>
-
                 <!-- Admin Link (if logged in) -->
                 @auth
-                    <a href="{{ route('admin.dashboard') }}" class="px-4 py-2 bg-white/10 hover:bg-white/20 backdrop-blur-md text-white rounded-lg transition-all duration-300 font-medium border border-white/20 constellation-glow">
-                        <i class="fas fa-dashboard mr-2"></i> Dashboard
+                    <a href="{{ route('admin.dashboard') }}" class="btn-primary text-sm">
+                        <i class="fas fa-dashboard"></i>
+                        <span>Dashboard</span>
                     </a>
                 @endauth
             </div>
@@ -54,7 +46,7 @@
                 <button 
                     @click="mobileMenuOpen = !mobileMenuOpen" 
                     type="button" 
-                    class="inline-flex items-center justify-center p-2 rounded-md text-white/70 hover:text-white hover:bg-white/10 transition-colors duration-200"
+                    class="inline-flex items-center justify-center p-2 rounded-lg text-[var(--page-text)] hover:bg-[var(--border-color)] transition-colors duration-200"
                     aria-controls="mobile-menu" 
                     :aria-expanded="mobileMenuOpen"
                 >
@@ -70,81 +62,102 @@
     <div 
         x-show="mobileMenuOpen" 
         x-transition:enter="transition ease-out duration-200"
-        x-transition:enter-start="opacity-0 transform scale-95"
-        x-transition:enter-end="opacity-100 transform scale-100"
+        x-transition:enter-start="opacity-0 transform -translate-y-4"
+        x-transition:enter-end="opacity-100 transform translate-y-0"
         x-transition:leave="transition ease-in duration-150"
-        x-transition:leave-start="opacity-100 transform scale-100"
-        x-transition:leave-end="opacity-0 transform scale-95"
+        x-transition:leave-start="opacity-100 transform translate-y-0"
+        x-transition:leave-end="opacity-0 transform -translate-y-4"
         class="md:hidden"
         id="mobile-menu"
     >
-        <div class="px-2 pt-2 pb-3 space-y-1 bg-black/90 backdrop-blur-md border-t border-white/10">
+        <div class="px-4 pt-2 pb-4 space-y-1 bg-[var(--page-bg)] border-t border-[var(--border-color)] shadow-lg">
             <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
-                <i class="fas fa-home mr-3"></i> Home
+                <i class="fas fa-home w-5"></i> Home
             </a>
             <a href="{{ route('about') }}" class="mobile-nav-link {{ request()->routeIs('about') ? 'active' : '' }}">
-                <i class="fas fa-user mr-3"></i> About
+                <i class="fas fa-user w-5"></i> About
             </a>
             <a href="{{ route('projects.index') }}" class="mobile-nav-link {{ request()->routeIs('projects.*') ? 'active' : '' }}">
-                <i class="fas fa-briefcase mr-3"></i> Projects
+                <i class="fas fa-briefcase w-5"></i> Projects
             </a>
             <a href="{{ route('services.index') }}" class="mobile-nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
-                <i class="fas fa-cog mr-3"></i> Services
+                <i class="fas fa-cog w-5"></i> Services
             </a>
-            {{-- Temporarily Hidden --}}
-            {{-- <a href="{{ route('blog.index') }}" class="mobile-nav-link {{ request()->routeIs('blog.*') ? 'active' : '' }}">
-                <i class="fas fa-blog mr-3"></i> Blog
-            </a> --}}
             <a href="{{ route('contact.index') }}" class="mobile-nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
-                <i class="fas fa-envelope mr-3"></i> Contact
+                <i class="fas fa-envelope w-5"></i> Contact
             </a>
-            <button
-                type="button"
-                @click="$dispatch('toggle-dark-mode')"
-                class="w-full flex items-center justify-center gap-3 rounded-full border border-white/10 bg-white/5 py-2 text-white/70 text-sm font-light hover:border-white/30 hover:bg-white/10 transition duration-200"
-            >
-                <i class="fas fa-adjust"></i>
-                <span>Toggle Theme</span>
-            </button>
             
             @auth
-                <a href="{{ route('admin.dashboard') }}" class="mobile-nav-link">
-                    <i class="fas fa-dashboard mr-3"></i> Dashboard
+                <a href="{{ route('admin.dashboard') }}" class="mobile-nav-link bg-[var(--button-bg)] text-white">
+                    <i class="fas fa-dashboard w-5"></i> Dashboard
                 </a>
             @endauth
         </div>
     </div>
 </nav>
 
+<!-- Spacer for fixed navbar -->
+<div class="h-20"></div>
+
 <style>
     .nav-link {
-        @apply text-white/70 hover:text-white transition-all duration-300 font-light relative;
+        position: relative;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        font-size: 0.9rem;
+        color: var(--page-text-muted);
+        transition: color 0.3s ease;
+        padding: 0.5rem 0;
     }
     
     .nav-link:hover {
-        text-shadow: 0 0 10px rgba(255,255,255,0.5);
+        color: var(--page-text);
+    }
+    
+    .nav-link::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background: var(--page-text);
+        transition: width 0.3s ease;
+    }
+    
+    .nav-link:hover::after {
+        width: 100%;
     }
     
     .nav-link.active {
-        @apply text-white font-normal;
-        text-shadow: 0 0 10px rgba(255,255,255,0.8);
+        color: var(--page-text);
+        font-weight: 600;
     }
     
     .nav-link.active::after {
-        content: '';
-        position: absolute;
-        bottom: -8px;
-        left: 0;
-        right: 0;
-        height: 1px;
-        background: linear-gradient(90deg, transparent, white, transparent);
+        width: 100%;
     }
 
     .mobile-nav-link {
-        @apply block px-3 py-2 rounded-md text-base font-light text-white/70 hover:text-white hover:bg-white/10 transition-all duration-300;
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.875rem 1rem;
+        border-radius: 0.5rem;
+        font-family: 'DM Sans', sans-serif;
+        font-weight: 500;
+        color: var(--page-text-muted);
+        transition: all 0.3s ease;
+    }
+
+    .mobile-nav-link:hover {
+        color: var(--page-text);
+        background-color: var(--border-color);
     }
 
     .mobile-nav-link.active {
-        @apply text-white bg-white/10 font-normal;
+        color: var(--page-text);
+        background-color: var(--border-color);
+        font-weight: 600;
     }
 </style>
