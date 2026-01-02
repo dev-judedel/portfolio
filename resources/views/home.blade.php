@@ -1,16 +1,14 @@
 @extends('layouts.app')
 
-@section('title', 'Home - Portfolio')
+@section('title', 'Home - JUDE')
 
 @section('content')
-    <!-- Hero Section - Modern AI Theme with Typing Animation -->
+    <!-- Hero Section -->
     <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-10">
         <!-- Decorative Elements -->
         <div class="absolute inset-0 overflow-hidden pointer-events-none">
-            <!-- Floating gradient orbs -->
-            <div class="absolute top-20 left-10 w-72 h-72 bg-[var(--accent-primary)]/10 rounded-full blur-3xl float" style="animation-delay: 0s;"></div>
-            <div class="absolute bottom-20 right-10 w-96 h-96 bg-[var(--accent-secondary)]/10 rounded-full blur-3xl float" style="animation-delay: 2s;"></div>
-            <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-[var(--accent-primary)]/5 rounded-full blur-3xl"></div>
+            <div class="hero-orb hero-orb-1"></div>
+            <div class="hero-orb hero-orb-2"></div>
         </div>
 
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 relative z-10">
@@ -19,37 +17,35 @@
                 <!-- Text Content -->
                 <div class="text-center lg:text-left space-y-8">
                     <!-- Greeting -->
-                    <div class="reveal-text reveal-1">
-                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--page-text)]/5 rounded-full text-sm font-medium text-[var(--page-text-muted)]">
+                    <div class="hero-animate hero-animate-1">
+                        <span class="inline-flex items-center gap-2 px-4 py-2 bg-[var(--color-navy)]/10 rounded-full text-sm font-medium text-[var(--color-navy)]">
                             <span class="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
                             Available for work
                         </span>
                     </div>
                     
-                    <!-- Main Heading with Typing Effect -->
-                    <div class="space-y-4 reveal-text reveal-2">
-                        <h1 class="font-display text-5xl md:text-7xl lg:text-8xl text-[var(--page-text)] leading-[1.1]">
-                            Hello, I'm
-                        </h1>
-                        <h1 class="font-heading text-5xl md:text-7xl lg:text-8xl font-bold text-[var(--page-text)]">
+                    <!-- Main Heading -->
+                    <div class="space-y-4 hero-animate hero-animate-2">
+                        <p class="text-lg text-[var(--body-color-muted)] font-body">Hello, I'm</p>
+                        <h1 class="font-heading text-6xl md:text-7xl lg:text-8xl text-[var(--color-navy)] leading-none">
                             <span id="typed-name"></span><span class="typing-cursor"></span>
                         </h1>
                     </div>
                     
-                    <!-- Title with Typing -->
-                    <div class="reveal-text reveal-3">
-                        <h2 class="font-heading text-xl md:text-2xl text-[var(--page-text-muted)] font-medium">
+                    <!-- Title -->
+                    <div class="hero-animate hero-animate-3">
+                        <h2 class="font-heading text-2xl md:text-3xl text-[var(--color-navy)]/70">
                             <span id="typed-title"></span>
                         </h2>
                     </div>
                     
                     <!-- Description -->
-                    <p class="text-lg text-[var(--page-text-muted)] max-w-xl font-body leading-relaxed reveal-text reveal-4">
+                    <p class="text-lg text-[var(--body-color-muted)] max-w-xl font-body leading-relaxed hero-animate hero-animate-4">
                         {{ $profile->short_bio ?? 'Crafting elegant digital experiences through clean code and thoughtful design. Specializing in modern web applications that make a difference.' }}
                     </p>
 
                     <!-- CTA Buttons -->
-                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 reveal-text reveal-5">
+                    <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4 hero-animate hero-animate-5">
                         <a href="{{ route('projects.index') }}" class="btn-primary">
                             <span>View My Work</span>
                             <i class="fas fa-arrow-right text-sm"></i>
@@ -63,58 +59,49 @@
 
                     <!-- Stats -->
                     @if($profile)
-                    <div class="grid grid-cols-3 gap-8 pt-12 reveal-text reveal-6">
+                    <div class="grid grid-cols-3 gap-8 pt-12 hero-animate hero-animate-6">
                         <div class="text-center lg:text-left">
-                            <div class="font-heading text-4xl md:text-5xl font-bold text-[var(--page-text)]">{{ $profile->years_experience }}<span class="text-[var(--accent-primary)]">+</span></div>
-                            <div class="text-sm text-[var(--page-text-muted)] font-medium mt-1">Years Experience</div>
+                            <div class="font-heading text-4xl md:text-5xl text-[var(--color-navy)]">{{ $profile->years_experience }}+</div>
+                            <div class="text-sm text-[var(--body-color-muted)] font-medium mt-1">Years Experience</div>
                         </div>
                         <div class="text-center lg:text-left">
-                            <div class="font-heading text-4xl md:text-5xl font-bold text-[var(--page-text)]">{{ $profile->projects_completed }}<span class="text-[var(--accent-primary)]">+</span></div>
-                            <div class="text-sm text-[var(--page-text-muted)] font-medium mt-1">Projects Done</div>
+                            <div class="font-heading text-4xl md:text-5xl text-[var(--color-navy)]">{{ $profile->projects_completed }}+</div>
+                            <div class="text-sm text-[var(--body-color-muted)] font-medium mt-1">Projects Done</div>
                         </div>
                         <div class="text-center lg:text-left">
-                            <div class="font-heading text-4xl md:text-5xl font-bold text-[var(--page-text)]">{{ $profile->happy_clients }}<span class="text-[var(--accent-primary)]">+</span></div>
-                            <div class="text-sm text-[var(--page-text-muted)] font-medium mt-1">Happy Clients</div>
+                            <div class="font-heading text-4xl md:text-5xl text-[var(--color-navy)]">{{ $profile->happy_clients }}+</div>
+                            <div class="text-sm text-[var(--body-color-muted)] font-medium mt-1">Happy Clients</div>
                         </div>
                     </div>
                     @endif
                 </div>
 
                 <!-- Profile Image with Starburst Effect -->
-                <div class="relative hidden lg:flex items-center justify-center reveal-text reveal-4">
-                    <div class="relative">
-                        <!-- Starburst/Spark Animation -->
-                        <div class="starburst-container absolute inset-0 flex items-center justify-center">
-                            <!-- Radiating lines -->
+                <div class="relative hidden lg:flex items-center justify-center hero-animate hero-animate-4">
+                    <div class="relative profile-wrapper">
+                        <!-- Starburst Animation -->
+                        <div class="starburst-container">
                             @for($i = 0; $i < 12; $i++)
-                            <div class="starburst-line" style="--rotation: {{ $i * 30 }}deg; --delay: {{ $i * 0.1 }}s;"></div>
+                            <div class="starburst-line" style="--rotation: {{ $i * 30 }}deg; --delay: {{ 0.8 + ($i * 0.08) }}s;"></div>
                             @endfor
                         </div>
 
-                        <!-- Animated cursor sparkles -->
+                        <!-- Sparkles -->
                         <div class="sparkle sparkle-1"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg></div>
                         <div class="sparkle sparkle-2"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg></div>
                         <div class="sparkle sparkle-3"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg></div>
-                        <div class="sparkle sparkle-4"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0L14.59 9.41L24 12L14.59 14.59L12 24L9.41 14.59L0 12L9.41 9.41L12 0Z"/></svg></div>
 
-                        <!-- AI Cursor animation -->
-                        <div class="ai-cursor">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                                <path d="M5.5 3.21V20.8C5.5 21.3 6.1 21.56 6.46 21.21L10.67 17H18.5C19.05 17 19.5 16.55 19.5 16V4C19.5 3.45 19.05 3 18.5 3H6.5C5.95 3 5.5 3.45 5.5 3.21Z" fill="var(--accent-primary)"/>
-                            </svg>
-                        </div>
-
-                        <!-- Profile Image Container -->
-                        <div class="relative w-80 h-80 md:w-96 md:h-96 z-10">
+                        <!-- Profile Image -->
+                        <div class="relative w-80 h-80 md:w-96 md:h-96 z-10 profile-image-container">
                             @if($profile && $profile->profile_image)
-                                <div class="w-full h-full rounded-full overflow-hidden border-4 border-[var(--page-text)]/10 shadow-2xl profile-glow">
+                                <div class="w-full h-full rounded-full overflow-hidden border-4 border-[var(--color-navy)]/20 shadow-2xl profile-glow">
                                     <img src="{{ asset('storage/' . $profile->profile_image) }}"
                                          alt="{{ $profile->full_name }}"
                                          class="w-full h-full object-cover">
                                 </div>
                             @else
-                                <div class="w-full h-full rounded-full bg-gradient-to-br from-[var(--accent-primary)]/20 to-[var(--accent-secondary)]/20 border-4 border-[var(--page-text)]/10 flex items-center justify-center">
-                                    <i class="fas fa-user text-8xl text-[var(--page-text)]/20"></i>
+                                <div class="w-full h-full rounded-full bg-[var(--color-navy)]/10 border-4 border-[var(--color-navy)]/20 flex items-center justify-center profile-glow">
+                                    <i class="fas fa-user text-8xl text-[var(--color-navy)]/30"></i>
                                 </div>
                             @endif
                         </div>
@@ -124,8 +111,8 @@
         </div>
 
         <!-- Scroll Indicator -->
-        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 reveal-text reveal-8">
-            <a href="#projects" class="flex flex-col items-center gap-2 text-[var(--page-text-muted)] hover:text-[var(--page-text)] transition-colors">
+        <div class="absolute bottom-12 left-1/2 transform -translate-x-1/2 hero-animate hero-animate-7">
+            <a href="#projects" class="flex flex-col items-center gap-2 text-[var(--body-color-muted)] hover:text-[var(--color-navy)] transition-colors">
                 <span class="text-xs font-medium uppercase tracking-widest">Scroll</span>
                 <div class="w-6 h-10 border-2 border-current rounded-full flex justify-center pt-2">
                     <div class="w-1 h-2 bg-current rounded-full animate-bounce"></div>
@@ -135,17 +122,13 @@
     </section>
 
     <!-- Featured Projects Section -->
-    <section id="projects" class="py-32 relative">
+    <section id="projects" class="py-24 md:py-32 relative bg-[var(--color-beige-dark)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-3 mb-6 fade-in-up">
-                    <div class="section-divider"></div>
-                    <span class="text-sm uppercase tracking-widest text-[var(--page-text-muted)] font-medium">Portfolio</span>
-                    <div class="section-divider" style="transform: scaleX(-1);"></div>
-                </div>
-                <h2 class="font-display text-4xl md:text-6xl text-[var(--page-text)] mb-4 fade-in-up" style="animation-delay: 0.1s;">Selected Work</h2>
-                <p class="text-[var(--page-text-muted)] font-body text-lg max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.2s;">
+            <div class="text-center mb-16 md:mb-20">
+                <span class="section-label scroll-animate">Portfolio</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-[var(--color-navy)] mt-4 mb-6 scroll-animate stagger-1">SELECTED WORK</h2>
+                <p class="text-[var(--body-color-muted)] font-body text-lg max-w-2xl mx-auto scroll-animate stagger-2">
                     A collection of projects that showcase my skills and passion for creating impactful digital experiences.
                 </p>
             </div>
@@ -153,7 +136,7 @@
             <!-- Projects Grid -->
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                 @forelse($featuredProjects as $index => $project)
-                    <div class="group card-modern overflow-hidden fade-in-up" style="animation-delay: {{ ($index + 1) * 0.1 }}s;">
+                    <article class="group card-modern scroll-animate stagger-{{ min($index + 1, 6) }}">
                         <!-- Project Image -->
                         <div class="relative overflow-hidden aspect-[4/3]">
                             @if($project->featured_image)
@@ -161,15 +144,15 @@
                                      alt="{{ $project->title }}"
                                      class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
                             @else
-                                <div class="w-full h-full flex items-center justify-center bg-gradient-to-br from-[var(--accent-primary)]/10 to-[var(--accent-secondary)]/10">
-                                    <i class="fas fa-image text-4xl text-[var(--page-text)]/20"></i>
+                                <div class="w-full h-full flex items-center justify-center bg-[var(--color-navy)]/5">
+                                    <i class="fas fa-image text-4xl text-[var(--color-navy)]/20"></i>
                                 </div>
                             @endif
 
                             <!-- Overlay -->
-                            <div class="absolute inset-0 bg-gradient-to-t from-[var(--page-text)] via-[var(--page-text)]/50 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-end p-6">
+                            <div class="absolute inset-0 bg-[var(--color-navy)]/90 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center">
                                 <a href="{{ route('projects.show', $project->slug) }}" 
-                                   class="btn-primary text-sm w-full justify-center">
+                                   class="btn-primary bg-white text-[var(--color-navy)] hover:bg-[var(--color-beige)]">
                                     <span>View Project</span>
                                     <i class="fas fa-arrow-right"></i>
                                 </a>
@@ -178,35 +161,35 @@
                         
                         <!-- Project Info -->
                         <div class="p-6 space-y-4">
-                            <span class="text-xs font-medium text-[var(--accent-primary)] uppercase tracking-wider">{{ $project->category }}</span>
-                            <h3 class="font-heading text-xl font-semibold text-[var(--page-text)] group-hover:text-[var(--accent-primary)] transition-colors">
-                                {{ $project->title }}
+                            <span class="text-xs font-semibold text-[var(--color-navy)] uppercase tracking-wider">{{ $project->category }}</span>
+                            <h3 class="font-heading text-xl text-[var(--color-navy)] group-hover:text-[var(--color-navy-light)] transition-colors">
+                                {{ strtoupper($project->title) }}
                             </h3>
-                            <p class="text-[var(--page-text-muted)] text-sm font-body line-clamp-2">
+                            <p class="text-[var(--body-color-muted)] text-sm font-body line-clamp-2">
                                 {{ Str::limit($project->description, 100) }}
                             </p>
                             
                             <!-- Tech Stack -->
                             <div class="flex flex-wrap gap-2 pt-2">
                                 @foreach(array_slice($project->tech_stack ?? [], 0, 3) as $tech)
-                                    <span class="px-3 py-1 bg-[var(--page-text)]/5 text-[var(--page-text-muted)] text-xs rounded-full font-medium">
+                                    <span class="px-3 py-1 bg-[var(--color-navy)]/5 text-[var(--body-color-muted)] text-xs rounded-full font-medium">
                                         {{ $tech }}
                                     </span>
                                 @endforeach
                             </div>
                         </div>
-                    </div>
+                    </article>
                 @empty
-                    <div class="col-span-3 text-center py-20 card-modern">
-                        <i class="fas fa-folder-open text-[var(--page-text)]/10 text-6xl mb-4"></i>
-                        <p class="text-[var(--page-text-muted)] font-body">No projects available yet.</p>
+                    <div class="col-span-3 text-center py-20 card-modern scroll-animate">
+                        <i class="fas fa-folder-open text-[var(--color-navy)]/20 text-6xl mb-4"></i>
+                        <p class="text-[var(--body-color-muted)] font-body">No projects available yet.</p>
                     </div>
                 @endforelse
             </div>
 
             <!-- View All Link -->
             @if($featuredProjects->count() > 0)
-            <div class="text-center mt-16 fade-in-up">
+            <div class="text-center mt-16 scroll-animate">
                 <a href="{{ route('projects.index') }}" class="btn-secondary">
                     <span>View All Projects</span>
                     <i class="fas fa-arrow-right text-sm"></i>
@@ -217,17 +200,13 @@
     </section>
 
     <!-- Skills Section -->
-    <section class="py-32 relative bg-[var(--page-bg-secondary)]">
+    <section class="py-24 md:py-32 relative">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-3 mb-6 fade-in-up">
-                    <div class="section-divider"></div>
-                    <span class="text-sm uppercase tracking-widest text-[var(--page-text-muted)] font-medium">Expertise</span>
-                    <div class="section-divider" style="transform: scaleX(-1);"></div>
-                </div>
-                <h2 class="font-display text-4xl md:text-6xl text-[var(--page-text)] mb-4 fade-in-up" style="animation-delay: 0.1s;">Skills & Tools</h2>
-                <p class="text-[var(--page-text-muted)] font-body text-lg max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.2s;">
+            <div class="text-center mb-16 md:mb-20">
+                <span class="section-label scroll-animate">Expertise</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-[var(--color-navy)] mt-4 mb-6 scroll-animate stagger-1">SKILLS & TOOLS</h2>
+                <p class="text-[var(--body-color-muted)] font-body text-lg max-w-2xl mx-auto scroll-animate stagger-2">
                     Technologies I work with to bring ideas to life.
                 </p>
             </div>
@@ -235,12 +214,12 @@
             <!-- Skills Grid -->
             <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-4">
                 @foreach($skills as $index => $skill)
-                    <div class="group card-modern p-6 text-center fade-in-up" style="animation-delay: {{ $index * 0.05 }}s;">
+                    <div class="group card-modern p-6 text-center scroll-animate-scale" style="transition-delay: {{ $index * 0.05 }}s;">
                         <div class="space-y-4">
-                            <div class="w-14 h-14 mx-auto rounded-xl bg-[var(--page-text)]/5 flex items-center justify-center group-hover:bg-[var(--page-text)] transition-colors duration-300">
-                                <i class="{{ $skill->icon }} text-2xl text-[var(--page-text-muted)] group-hover:text-white transition-colors duration-300"></i>
+                            <div class="w-14 h-14 mx-auto rounded-xl bg-[var(--color-navy)]/5 flex items-center justify-center group-hover:bg-[var(--color-navy)] transition-colors duration-300">
+                                <i class="{{ $skill->icon }} text-2xl text-[var(--color-navy)] group-hover:text-white transition-colors duration-300"></i>
                             </div>
-                            <h4 class="font-heading font-medium text-[var(--page-text)] text-sm">
+                            <h4 class="font-body font-semibold text-[var(--body-color)] text-sm">
                                 {{ $skill->name }}
                             </h4>
                         </div>
@@ -251,47 +230,43 @@
     </section>
 
     <!-- Testimonials Section -->
-    <section class="py-32 relative">
+    <section class="py-24 md:py-32 relative bg-[var(--color-beige-dark)]">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <!-- Section Header -->
-            <div class="text-center mb-20">
-                <div class="inline-flex items-center gap-3 mb-6 fade-in-up">
-                    <div class="section-divider"></div>
-                    <span class="text-sm uppercase tracking-widest text-[var(--page-text-muted)] font-medium">Testimonials</span>
-                    <div class="section-divider" style="transform: scaleX(-1);"></div>
-                </div>
-                <h2 class="font-display text-4xl md:text-6xl text-[var(--page-text)] mb-4 fade-in-up" style="animation-delay: 0.1s;">Client Feedback</h2>
+            <div class="text-center mb-16 md:mb-20">
+                <span class="section-label scroll-animate">Testimonials</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-[var(--color-navy)] mt-4 scroll-animate stagger-1">CLIENT FEEDBACK</h2>
             </div>
 
             <!-- Testimonials Grid -->
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
                 @foreach($testimonials as $index => $testimonial)
-                    <div class="card-modern p-8 space-y-6 fade-in-up" style="animation-delay: {{ ($index + 1) * 0.1 }}s;">
+                    <div class="card-modern p-8 space-y-6 scroll-animate stagger-{{ $index + 1 }}">
                         <!-- Quote Icon -->
-                        <div class="w-12 h-12 rounded-xl bg-[var(--accent-primary)]/10 flex items-center justify-center">
-                            <i class="fas fa-quote-left text-[var(--accent-primary)]"></i>
+                        <div class="w-12 h-12 rounded-xl bg-[var(--color-navy)]/10 flex items-center justify-center">
+                            <i class="fas fa-quote-left text-[var(--color-navy)]"></i>
                         </div>
                         
                         <!-- Rating Stars -->
                         <div class="flex gap-1">
                             @for($i = 1; $i <= 5; $i++)
-                                <i class="fas fa-star text-sm {{ $i <= $testimonial->rating ? 'text-[var(--accent-primary)]' : 'text-[var(--border-color)]' }}"></i>
+                                <i class="fas fa-star text-sm {{ $i <= $testimonial->rating ? 'text-[var(--color-navy)]' : 'text-[var(--color-navy)]/20' }}"></i>
                             @endfor
                         </div>
                         
                         <!-- Testimonial Text -->
-                        <p class="text-[var(--page-text-muted)] font-body leading-relaxed">
+                        <p class="text-[var(--body-color-muted)] font-body leading-relaxed">
                             "{{ $testimonial->testimonial }}"
                         </p>
                         
                         <!-- Client Info -->
                         <div class="flex items-center gap-4 pt-4 border-t border-[var(--border-color)]">
-                            <div class="w-12 h-12 rounded-full bg-[var(--page-text)] flex items-center justify-center text-white font-heading font-bold">
+                            <div class="w-12 h-12 rounded-full bg-[var(--color-navy)] flex items-center justify-center text-white font-heading text-lg">
                                 {{ substr($testimonial->client_name, 0, 1) }}
                             </div>
                             <div>
-                                <h5 class="font-heading font-semibold text-[var(--page-text)]">{{ $testimonial->client_name }}</h5>
-                                <p class="text-sm text-[var(--page-text-muted)]">{{ $testimonial->client_position }}</p>
+                                <h5 class="font-body font-semibold text-[var(--body-color)]">{{ $testimonial->client_name }}</h5>
+                                <p class="text-sm text-[var(--body-color-muted)]">{{ $testimonial->client_position }}</p>
                             </div>
                         </div>
                     </div>
@@ -301,25 +276,20 @@
     </section>
 
     <!-- CTA Section -->
-    <section class="py-32 relative overflow-hidden">
-        <!-- Background decoration -->
-        <div class="absolute inset-0 bg-[var(--page-text)]"></div>
-        <div class="absolute top-0 left-0 w-96 h-96 bg-[var(--accent-primary)]/20 rounded-full blur-3xl"></div>
-        <div class="absolute bottom-0 right-0 w-96 h-96 bg-[var(--accent-secondary)]/20 rounded-full blur-3xl"></div>
-        
+    <section class="py-24 md:py-32 relative overflow-hidden" style="background-color: #1B365D;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="space-y-8">
-                <h2 class="font-display text-4xl md:text-6xl text-white leading-tight fade-in-up">
-                    Let's Create Something<br>
-                    <span class="text-[var(--accent-primary)]">Amazing Together</span>
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-white leading-tight scroll-animate">
+                    LET'S CREATE SOMETHING<br>
+                    <span class="text-white/70">AMAZING TOGETHER</span>
                 </h2>
-                <p class="text-xl text-white/70 font-body max-w-2xl mx-auto fade-in-up" style="animation-delay: 0.1s;">
+                <p class="text-xl font-body max-w-2xl mx-auto scroll-animate stagger-1" style="color: #FFFFFF;">
                     Have a project in mind? Let's discuss how we can work together to bring your vision to life.
                 </p>
                 
-                <div class="pt-4 fade-in-up" style="animation-delay: 0.2s;">
+                <div class="pt-4 scroll-animate stagger-2">
                     <a href="{{ route('contact.index') }}" 
-                       class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[var(--page-text)] rounded-lg font-heading font-semibold hover:bg-[var(--accent-primary)] hover:text-white transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
+                       class="inline-flex items-center gap-3 px-10 py-4 bg-white text-[#1B365D] rounded-lg font-body font-semibold hover:bg-[#F5F0E8] transition-all duration-300 shadow-lg hover:shadow-xl hover:-translate-y-1">
                         <span>Start a Conversation</span>
                         <i class="fas fa-arrow-right text-sm"></i>
                     </a>
@@ -328,13 +298,179 @@
         </div>
     </section>
 
-    <!-- Typing Animation Script -->
+    <!-- Styles -->
+    <style>
+        /* Hero animations */
+        .hero-animate {
+            opacity: 0;
+            transform: translateY(40px);
+        }
+
+        .hero-animate.loaded {
+            animation: heroFadeIn 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .hero-animate-1.loaded { animation-delay: 0.1s; }
+        .hero-animate-2.loaded { animation-delay: 0.2s; }
+        .hero-animate-3.loaded { animation-delay: 0.4s; }
+        .hero-animate-4.loaded { animation-delay: 0.3s; }
+        .hero-animate-5.loaded { animation-delay: 0.5s; }
+        .hero-animate-6.loaded { animation-delay: 0.6s; }
+        .hero-animate-7.loaded { animation-delay: 0.8s; }
+
+        @keyframes heroFadeIn {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Hero orbs */
+        .hero-orb {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(80px);
+            opacity: 0;
+        }
+
+        .hero-orb.loaded {
+            animation: orbFadeIn 1.5s ease-out forwards;
+        }
+
+        .hero-orb-1 {
+            top: 10%;
+            left: 5%;
+            width: 400px;
+            height: 400px;
+            background: var(--color-navy);
+            opacity: 0.05;
+        }
+
+        .hero-orb-2 {
+            bottom: 10%;
+            right: 5%;
+            width: 500px;
+            height: 500px;
+            background: var(--color-navy);
+            opacity: 0.03;
+            animation-delay: 0.3s;
+        }
+
+        @keyframes orbFadeIn {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 0.05; transform: scale(1); }
+        }
+
+        /* Starburst */
+        .starburst-container {
+            width: 500px;
+            height: 500px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            pointer-events: none;
+        }
+
+        .starburst-line {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 3px;
+            height: 0;
+            background: linear-gradient(to top, transparent, var(--color-navy), transparent);
+            transform-origin: center bottom;
+            transform: translate(-50%, -100%) rotate(var(--rotation));
+            opacity: 0;
+            border-radius: 2px;
+        }
+
+        .starburst-line.animate {
+            animation: starburstGrow 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+            animation-delay: var(--delay);
+        }
+
+        @keyframes starburstGrow {
+            0% { height: 0; opacity: 0; }
+            100% { height: 80px; opacity: 0.4; }
+        }
+
+        /* Sparkles */
+        .sparkle {
+            position: absolute;
+            color: var(--color-navy);
+            opacity: 0;
+            transform: scale(0) rotate(0deg);
+            z-index: 20;
+        }
+
+        .sparkle.animate {
+            animation: sparkleAppear 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        .sparkle svg { width: 20px; height: 20px; }
+        .sparkle-1 { top: 5%; right: 10%; animation-delay: 1s; }
+        .sparkle-2 { bottom: 15%; left: 5%; animation-delay: 1.2s; }
+        .sparkle-2 svg { width: 16px; height: 16px; }
+        .sparkle-3 { top: 20%; left: 0%; animation-delay: 1.4s; }
+        .sparkle-3 svg { width: 12px; height: 12px; }
+
+        @keyframes sparkleAppear {
+            0% { opacity: 0; transform: scale(0) rotate(0deg); }
+            50% { opacity: 1; transform: scale(1.3) rotate(180deg); }
+            100% { opacity: 0.6; transform: scale(1) rotate(360deg); }
+        }
+
+        /* Profile image */
+        .profile-image-container {
+            opacity: 0;
+            transform: scale(0.8);
+        }
+
+        .profile-image-container.animate {
+            animation: profileScale 0.8s cubic-bezier(0.16, 1, 0.3, 1) 0.4s forwards;
+        }
+
+        @keyframes profileScale {
+            from { opacity: 0; transform: scale(0.8); }
+            to { opacity: 1; transform: scale(1); }
+        }
+
+        .profile-glow {
+            box-shadow: 0 25px 60px rgba(27, 54, 93, 0.15);
+        }
+
+        .profile-glow.animate {
+            animation: profileGlowAppear 1s ease 0.8s forwards;
+        }
+
+        @keyframes profileGlowAppear {
+            from { box-shadow: 0 25px 60px rgba(27, 54, 93, 0.15); }
+            to { box-shadow: 0 0 60px rgba(27, 54, 93, 0.15), 0 25px 60px rgba(27, 54, 93, 0.2); }
+        }
+    </style>
+
+    <!-- Scripts -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            const name = "{{ $profile->full_name ?? 'Developer' }}";
-            const title = "{{ $profile->title ?? 'Full-Stack Developer' }}";
+            // Trigger hero animations
+            setTimeout(() => {
+                document.querySelectorAll('.hero-animate').forEach(el => el.classList.add('loaded'));
+                document.querySelectorAll('.hero-orb').forEach(el => el.classList.add('loaded'));
+            }, 100);
+
+            // Trigger profile animations
+            setTimeout(() => {
+                document.querySelector('.profile-image-container')?.classList.add('animate');
+                document.querySelectorAll('.starburst-line').forEach(el => el.classList.add('animate'));
+                document.querySelectorAll('.sparkle').forEach(el => el.classList.add('animate'));
+                document.querySelector('.profile-glow')?.classList.add('animate');
+            }, 300);
+
+            // Typing animation
+            const name = "{{ $profile->full_name ?? 'JUDE' }}";
+            const title = "{{ $profile->title ?? 'FULL-STACK DEVELOPER' }}";
             
             function typeText(element, text, speed = 100, callback) {
+                if (!element) return;
                 let i = 0;
                 const interval = setInterval(() => {
                     if (i < text.length) {
@@ -347,182 +483,16 @@
                 }, speed);
             }
             
-            // Start typing after a short delay
             setTimeout(() => {
                 const nameElement = document.getElementById('typed-name');
                 const titleElement = document.getElementById('typed-title');
                 
-                typeText(nameElement, name, 80, () => {
+                typeText(nameElement, name.toUpperCase(), 80, () => {
                     setTimeout(() => {
-                        typeText(titleElement, title, 50);
+                        typeText(titleElement, title.toUpperCase(), 50);
                     }, 300);
                 });
-            }, 800);
+            }, 600);
         });
     </script>
-
-    <!-- Starburst & Cursor Animations -->
-    <style>
-        /* Starburst container */
-        .starburst-container {
-            width: 500px;
-            height: 500px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            pointer-events: none;
-        }
-
-        /* Individual starburst lines */
-        .starburst-line {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 3px;
-            height: 80px;
-            background: linear-gradient(to top, transparent, var(--accent-primary), transparent);
-            transform-origin: center bottom;
-            transform: translate(-50%, -100%) rotate(var(--rotation));
-            animation: starburst-pulse 2s ease-in-out infinite;
-            animation-delay: var(--delay);
-            opacity: 0.6;
-            border-radius: 2px;
-        }
-
-        @keyframes starburst-pulse {
-            0%, 100% {
-                height: 60px;
-                opacity: 0.4;
-            }
-            50% {
-                height: 100px;
-                opacity: 0.8;
-            }
-        }
-
-        /* Sparkle stars */
-        .sparkle {
-            position: absolute;
-            color: var(--accent-primary);
-            animation: sparkle-float 3s ease-in-out infinite;
-            z-index: 20;
-        }
-
-        .sparkle svg {
-            width: 20px;
-            height: 20px;
-        }
-
-        .sparkle-1 {
-            top: 5%;
-            right: 10%;
-            animation-delay: 0s;
-        }
-
-        .sparkle-2 {
-            bottom: 15%;
-            left: 5%;
-            animation-delay: 0.5s;
-        }
-
-        .sparkle-2 svg {
-            width: 16px;
-            height: 16px;
-        }
-
-        .sparkle-3 {
-            top: 20%;
-            left: 0%;
-            animation-delay: 1s;
-        }
-
-        .sparkle-3 svg {
-            width: 12px;
-            height: 12px;
-        }
-
-        .sparkle-4 {
-            bottom: 5%;
-            right: 5%;
-            animation-delay: 1.5s;
-        }
-
-        .sparkle-4 svg {
-            width: 14px;
-            height: 14px;
-        }
-
-        @keyframes sparkle-float {
-            0%, 100% {
-                transform: translateY(0) scale(1) rotate(0deg);
-                opacity: 0.6;
-            }
-            50% {
-                transform: translateY(-10px) scale(1.2) rotate(180deg);
-                opacity: 1;
-            }
-        }
-
-        /* AI Cursor animation */
-        .ai-cursor {
-            position: absolute;
-            top: 10%;
-            right: -10%;
-            z-index: 30;
-            animation: cursor-move 4s ease-in-out infinite;
-        }
-
-        .ai-cursor svg {
-            filter: drop-shadow(0 4px 6px rgba(217, 119, 87, 0.3));
-        }
-
-        @keyframes cursor-move {
-            0%, 100% {
-                transform: translate(0, 0) rotate(-5deg);
-                opacity: 0.8;
-            }
-            25% {
-                transform: translate(-20px, 30px) rotate(5deg);
-                opacity: 1;
-            }
-            50% {
-                transform: translate(-40px, 10px) rotate(-3deg);
-                opacity: 0.9;
-            }
-            75% {
-                transform: translate(-10px, 40px) rotate(8deg);
-                opacity: 1;
-            }
-        }
-
-        /* Profile glow effect */
-        .profile-glow {
-            box-shadow: 
-                0 0 40px rgba(217, 119, 87, 0.15),
-                0 0 80px rgba(217, 119, 87, 0.1),
-                0 25px 50px rgba(0, 0, 0, 0.15);
-            animation: profile-pulse 4s ease-in-out infinite;
-        }
-
-        @keyframes profile-pulse {
-            0%, 100% {
-                box-shadow: 
-                    0 0 40px rgba(217, 119, 87, 0.15),
-                    0 0 80px rgba(217, 119, 87, 0.1),
-                    0 25px 50px rgba(0, 0, 0, 0.15);
-            }
-            50% {
-                box-shadow: 
-                    0 0 60px rgba(217, 119, 87, 0.25),
-                    0 0 100px rgba(217, 119, 87, 0.15),
-                    0 25px 50px rgba(0, 0, 0, 0.2);
-            }
-        }
-
-        /* Additional sparkle burst on hover */
-        .starburst-container:hover .starburst-line {
-            animation-duration: 1s;
-        }
-    </style>
 @endsection

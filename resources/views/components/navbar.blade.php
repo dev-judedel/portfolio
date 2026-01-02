@@ -1,6 +1,6 @@
 <nav x-data="{ mobileMenuOpen: false, scrolled: false }" 
      x-init="window.addEventListener('scroll', () => { scrolled = window.scrollY > 20 })"
-     :class="{ 'bg-[var(--page-bg)]/95 backdrop-blur-md shadow-sm': scrolled, 'bg-transparent': !scrolled }"
+     :class="{ 'bg-[var(--color-beige)]/95 backdrop-blur-md shadow-sm': scrolled, 'bg-transparent': !scrolled }"
      class="fixed top-0 left-0 right-0 z-40 transition-all duration-300">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div class="flex justify-between items-center h-20">
@@ -8,8 +8,8 @@
             <!-- Logo -->
             <div class="flex-shrink-0">
                 <a href="{{ route('home') }}" class="group flex items-center gap-2">
-                    <span class="font-heading text-2xl font-bold text-[var(--page-text)] group-hover:text-[var(--accent-primary)] transition-colors duration-300">
-                        Portfolio
+                    <span class="font-heading text-3xl text-[var(--color-navy)] group-hover:text-[var(--color-navy-light)] transition-colors duration-300">
+                        JUDE
                     </span>
                 </a>
             </div>
@@ -28,15 +28,15 @@
                 <a href="{{ route('services.index') }}" class="nav-link {{ request()->routeIs('services.*') ? 'active' : '' }}">
                     Services
                 </a>
-                <a href="{{ route('contact.index') }}" class="nav-link {{ request()->routeIs('contact.*') ? 'active' : '' }}">
-                    Contact
+                <a href="{{ route('contact.index') }}" class="btn-primary text-sm py-3 px-6">
+                    <span>Contact</span>
+                    <i class="fas fa-arrow-right text-xs"></i>
                 </a>
 
                 <!-- Admin Link (if logged in) -->
                 @auth
-                    <a href="{{ route('admin.dashboard') }}" class="btn-primary text-sm">
+                    <a href="{{ route('admin.dashboard') }}" class="nav-link">
                         <i class="fas fa-dashboard"></i>
-                        <span>Dashboard</span>
                     </a>
                 @endauth
             </div>
@@ -46,7 +46,7 @@
                 <button 
                     @click="mobileMenuOpen = !mobileMenuOpen" 
                     type="button" 
-                    class="inline-flex items-center justify-center p-2 rounded-lg text-[var(--page-text)] hover:bg-[var(--border-color)] transition-colors duration-200"
+                    class="inline-flex items-center justify-center p-2.5 rounded-lg text-[var(--color-navy)] hover:bg-[var(--color-navy)]/10 transition-colors duration-200"
                     aria-controls="mobile-menu" 
                     :aria-expanded="mobileMenuOpen"
                 >
@@ -70,7 +70,7 @@
         class="md:hidden"
         id="mobile-menu"
     >
-        <div class="px-4 pt-2 pb-4 space-y-1 bg-[var(--page-bg)] border-t border-[var(--border-color)] shadow-lg">
+        <div class="px-4 pt-2 pb-4 space-y-1 bg-[var(--color-beige)] border-t border-[var(--border-color)] shadow-lg">
             <a href="{{ route('home') }}" class="mobile-nav-link {{ request()->routeIs('home') ? 'active' : '' }}">
                 <i class="fas fa-home w-5"></i> Home
             </a>
@@ -88,7 +88,7 @@
             </a>
             
             @auth
-                <a href="{{ route('admin.dashboard') }}" class="mobile-nav-link bg-[var(--button-bg)] text-white">
+                <a href="{{ route('admin.dashboard') }}" class="mobile-nav-link bg-[var(--color-navy)] text-white">
                     <i class="fas fa-dashboard w-5"></i> Dashboard
                 </a>
             @endauth
@@ -102,16 +102,16 @@
 <style>
     .nav-link {
         position: relative;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
         font-size: 0.9rem;
-        color: var(--page-text-muted);
+        color: var(--body-color-muted);
         transition: color 0.3s ease;
         padding: 0.5rem 0;
     }
     
     .nav-link:hover {
-        color: var(--page-text);
+        color: var(--color-navy);
     }
     
     .nav-link::after {
@@ -121,7 +121,7 @@
         left: 0;
         width: 0;
         height: 2px;
-        background: var(--page-text);
+        background: var(--color-navy);
         transition: width 0.3s ease;
     }
     
@@ -130,7 +130,7 @@
     }
     
     .nav-link.active {
-        color: var(--page-text);
+        color: var(--color-navy);
         font-weight: 600;
     }
     
@@ -144,20 +144,20 @@
         gap: 0.75rem;
         padding: 0.875rem 1rem;
         border-radius: 0.5rem;
-        font-family: 'DM Sans', sans-serif;
+        font-family: 'Inter', sans-serif;
         font-weight: 500;
-        color: var(--page-text-muted);
+        color: var(--body-color-muted);
         transition: all 0.3s ease;
     }
 
     .mobile-nav-link:hover {
-        color: var(--page-text);
-        background-color: var(--border-color);
+        color: var(--color-navy);
+        background-color: var(--color-navy)/10;
     }
 
     .mobile-nav-link.active {
-        color: var(--page-text);
-        background-color: var(--border-color);
+        color: var(--color-navy);
+        background-color: rgba(27, 54, 93, 0.08);
         font-weight: 600;
     }
 </style>

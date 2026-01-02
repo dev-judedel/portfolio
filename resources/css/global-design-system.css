@@ -1,108 +1,6 @@
 /* ===============================================
-   PORTFOLIO - GLOBAL DESIGN SYSTEM
-   Ultra-Minimalist Space Theme
+   JUDE PORTFOLIO - UTILITY ANIMATIONS
    =============================================== */
-
-/* ============ COLOR VARIABLES ============ */
-:root {
-    --page-bg: #010101;
-    --page-text: #f5f5f7;
-    --border-color: rgba(255, 255, 255, 0.2);
-    --page-bg-image: 
-        radial-gradient(circle, rgba(255,255,255,0.08) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.05) 1px, transparent 1px),
-        radial-gradient(circle, rgba(255,255,255,0.03) 1px, transparent 1px);
-}
-
-/* Light Mode Override */
-html:not(.dark) {
-    --page-bg: #f8fafc;
-    --page-text: #0f172a;
-    --border-color: rgba(15, 23, 42, 0.2);
-    --page-bg-image:
-        radial-gradient(circle, rgba(15,23,42,0.06) 1px, transparent 1px),
-        radial-gradient(circle, rgba(15,23,42,0.04) 1px, transparent 1px),
-        radial-gradient(circle, rgba(15,23,42,0.02) 1px, transparent 1px);
-}
-
-/* ============ BASE STYLES ============ */
-body {
-    background-color: var(--page-bg);
-    background-image: var(--page-bg-image);
-    background-size: 600px 600px, 400px 400px, 300px 300px;
-    background-position: 0 0, 50px 80px, 150px 300px;
-    color: var(--page-text);
-}
-
-/* ============ GRADIENTS ============ */
-.space-gradient {
-    background: linear-gradient(180deg, 
-        rgba(0,0,0,0.98) 0%, 
-        rgba(5,5,10,0.95) 50%,
-        rgba(0,0,0,0.98) 100%
-    );
-}
-
-html:not(.dark) .space-gradient {
-    background: linear-gradient(180deg, #f8fafc 0%, #e2e8f0 60%, #f8fafc 100%);
-}
-
-/* ============ EFFECTS ============ */
-.constellation-glow {
-    box-shadow: 
-        0 0 30px rgba(255,255,255,0.03),
-        0 0 60px rgba(255,255,255,0.02);
-}
-
-.text-glow {
-    text-shadow: 
-        0 0 20px rgba(255,255,255,0.15),
-        0 0 40px rgba(255,255,255,0.08);
-}
-
-/* ============ SCROLLBAR ============ */
-::-webkit-scrollbar {
-    width: 8px;
-}
-
-::-webkit-scrollbar-track {
-    background: rgba(0,0,0,0.5);
-}
-
-::-webkit-scrollbar-thumb {
-    background: rgba(255,255,255,0.1);
-    border-radius: 4px;
-}
-
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255,255,255,0.15);
-}
-
-/* ============ SELECTION ============ */
-::selection {
-    background: rgba(255,255,255,0.15);
-    color: #ffffff;
-}
-
-/* ============ LINK EFFECTS ============ */
-.link-underline {
-    position: relative;
-}
-
-.link-underline::after {
-    content: '';
-    position: absolute;
-    width: 0;
-    height: 1px;
-    bottom: -2px;
-    left: 0;
-    background: rgba(255,255,255,0.5);
-    transition: width 0.3s ease;
-}
-
-.link-underline:hover::after {
-    width: 100%;
-}
 
 /* ============ ANIMATIONS ============ */
 @keyframes fadeIn {
@@ -115,26 +13,6 @@ html:not(.dark) .space-gradient {
     to { opacity: 1; transform: translateY(0); }
 }
 
-@keyframes spinSlow {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
-}
-
-@keyframes spinReverse {
-    from { transform: rotate(360deg); }
-    to { transform: rotate(0deg); }
-}
-
-@keyframes orbit {
-    from { transform: rotate(0deg) translateX(200px) rotate(0deg); }
-    to { transform: rotate(360deg) translateX(200px) rotate(-360deg); }
-}
-
-@keyframes orbitReverse {
-    from { transform: rotate(360deg) translateX(150px) rotate(-360deg); }
-    to { transform: rotate(0deg) translateX(150px) rotate(0deg); }
-}
-
 @keyframes pulseSlow {
     0%, 100% { opacity: 0.3; }
     50% { opacity: 0.6; }
@@ -143,11 +21,6 @@ html:not(.dark) .space-gradient {
 @keyframes bounceSlow {
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-10px); }
-}
-
-@keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
 }
 
 /* Animation Classes */
@@ -159,138 +32,10 @@ html:not(.dark) .space-gradient {
     animation: fadeInUp 0.8s ease-out forwards;
 }
 
-.animate-spin-slow {
-    animation: spinSlow 60s linear infinite;
-}
-
-.animate-spin-reverse {
-    animation: spinReverse 45s linear infinite;
-}
-
-.animate-orbit {
-    animation: orbit 20s linear infinite;
-}
-
-.animate-orbit-reverse {
-    animation: orbitReverse 25s linear infinite;
-}
-
 .animate-pulse-slow {
     animation: pulseSlow 4s ease-in-out infinite;
 }
 
 .animate-bounce-slow {
     animation: bounceSlow 3s ease-in-out infinite;
-}
-
-.animate-shimmer {
-    animation: shimmer 2s ease-in-out;
-}
-
-/* ============ LIGHT MODE TEXT OVERRIDES ============ */
-html:not(.dark) [class*="text-white"] {
-    color: var(--page-text) !important;
-}
-
-html:not(.dark) [class*="bg-black"] {
-    background-color: rgba(15, 23, 42, 0.05) !important;
-}
-
-html:not(.dark) [class*="border-white"] {
-    border-color: var(--border-color) !important;
-}
-
-/* ============ COMPONENT STYLES ============ */
-
-/* Card Base */
-.card-base {
-    @apply p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/5 hover:border-white/10 transition-all duration-500;
-}
-
-/* Skill Card */
-.skill-card {
-    @apply group text-center p-8 bg-white/5 backdrop-blur-sm rounded-lg border border-white/5 hover:border-white/20 hover:bg-white/8 transition-all duration-500;
-}
-
-/* Project Card */
-.project-card {
-    @apply group;
-}
-
-/* Button Primary */
-.btn-primary {
-    @apply group relative inline-flex items-center px-8 py-3.5 overflow-hidden;
-}
-
-.btn-primary-bg {
-    @apply absolute inset-0 bg-white/5 backdrop-blur-sm border border-white/20 rounded-lg transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/30;
-}
-
-/* Button Secondary */
-.btn-secondary {
-    @apply group inline-flex items-center gap-3 px-10 py-4 bg-white/5 hover:bg-white/10 backdrop-blur-sm border border-white/20 hover:border-white/30 rounded-lg transition-all duration-500;
-}
-
-/* Section Spacing */
-.section-padding {
-    @apply py-32;
-}
-
-/* Container */
-.container-custom {
-    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
-}
-
-/* Typography */
-.heading-1 {
-    @apply text-5xl md:text-7xl font-extralight text-white tracking-tight;
-}
-
-.heading-2 {
-    @apply text-4xl md:text-5xl font-extralight text-white tracking-tight;
-}
-
-.heading-3 {
-    @apply text-xl md:text-2xl text-white/60 font-light tracking-wide;
-}
-
-.body-text {
-    @apply text-base text-white/45 font-light leading-relaxed;
-}
-
-.caption {
-    @apply text-[10px] uppercase tracking-[0.3em] text-white/40 font-light;
-}
-
-/* ============ UTILITY CLASSES ============ */
-.divider-horizontal {
-    @apply w-12 h-px bg-white/20;
-}
-
-.divider-vertical {
-    @apply w-px h-12 bg-gradient-to-b from-white/30 via-white/10 to-transparent;
-}
-
-/* Stats Display */
-.stat-number {
-    @apply text-4xl font-extralight text-white/90;
-}
-
-.stat-label {
-    @apply text-[10px] text-white/40 uppercase tracking-[0.2em] font-light;
-}
-
-/* ============ RESPONSIVE UTILITIES ============ */
-@media (max-width: 768px) {
-    .heading-1 {
-        @apply text-4xl;
-    }
-    
-    .heading-2 {
-        @apply text-3xl;
-    }
-    
-    .section-padding {
-        @apply py-20;
-    }
 }
