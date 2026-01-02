@@ -254,11 +254,11 @@
     <section class="py-24 md:py-32 relative overflow-hidden" style="background-color: #1B365D;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="space-y-8">
-                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl text-white leading-tight scroll-animate">
+                <h2 class="font-heading text-4xl md:text-5xl lg:text-6xl leading-tight scroll-animate" style="color: #FFFFFF;">
                     INTERESTED IN<br>
-                    <span class="text-white/70">WORKING TOGETHER?</span>
+                    <span style="color: #FFFFFF;">WORKING TOGETHER?</span>
                 </h2>
-                <p class="text-xl text-white/70 font-body max-w-2xl mx-auto scroll-animate stagger-1">
+                <p class="text-xl font-body max-w-2xl mx-auto scroll-animate stagger-1" style="color: #FFFFFF;">
                     Let's discuss how I can help bring your project to life.
                 </p>
                 

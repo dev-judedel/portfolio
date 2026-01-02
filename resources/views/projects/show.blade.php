@@ -215,10 +215,10 @@
     <section class="py-24 relative overflow-hidden" style="background-color: #1B365D;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="space-y-8">
-                <h2 class="font-heading text-4xl md:text-5xl text-white scroll-animate">
+                <h2 class="font-heading text-4xl md:text-5xl scroll-animate" style="color: #FFFFFF;">
                     INTERESTED IN WORKING TOGETHER?
                 </h2>
-                <p class="text-xl text-white/70 font-body max-w-2xl mx-auto scroll-animate stagger-1">
+                <p class="text-xl font-body max-w-2xl mx-auto scroll-animate stagger-1" style="color: #FFFFFF;">
                     Let's discuss your project and create something amazing.
                 </p>
                 <div class="pt-4 scroll-animate stagger-2">

@@ -159,10 +159,10 @@
     <section class="py-24 relative overflow-hidden" style="background-color: #1B365D;">
         <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
             <div class="space-y-8">
-                <h2 class="font-heading text-4xl md:text-5xl text-white scroll-animate">
+                <h2 class="font-heading text-4xl md:text-5xl scroll-animate" style="color: #FFFFFF;">
                     READY TO START YOUR PROJECT?
                 </h2>
-                <p class="text-xl text-white/70 font-body max-w-2xl mx-auto scroll-animate stagger-1">
+                <p class="text-xl font-body max-w-2xl mx-auto scroll-animate stagger-1" style="color: #FFFFFF;">
                     Let's discuss your requirements and create something amazing together.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-4 justify-center pt-4 scroll-animate stagger-2">
@@ -170,7 +170,7 @@
                         <span>Get in Touch</span>
                         <i class="fas fa-arrow-right"></i>
                     </a>
-                    <a href="{{ route('projects.index') }}" class="inline-flex items-center gap-3 px-8 py-4 bg-transparent text-white border-2 border-white/30 rounded-lg font-body font-semibold hover:bg-white/10 transition-all">
+                    <a href="{{ route('projects.index') }}" class="inline-flex items-center gap-3 px-8 py-4 rounded-lg font-body font-semibold transition-all" style="background-color: #FFFFFF; color: #1B365D;">
                         <span>View My Work</span>
                     </a>
                 </div>

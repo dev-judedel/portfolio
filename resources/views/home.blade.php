@@ -190,7 +190,7 @@
             <!-- View All Link -->
             @if($featuredProjects->count() > 0)
             <div class="text-center mt-16 scroll-animate">
-                <a href="{{ route('projects.index') }}" class="btn-secondary">
+                <a href="{{ route('projects.index') }}" class="inline-flex items-center gap-2 px-8 py-4 rounded-lg font-body font-semibold transition-all duration-300" style="background-color: #1B365D; color: #FFFFFF;">
                     <span>View All Projects</span>
                     <i class="fas fa-arrow-right text-sm"></i>
                 </a>
